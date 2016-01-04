@@ -23,4 +23,8 @@
 
 class Statistic < ActiveRecord::Base
   belongs_to :player
+
+  def points
+    self.goals + self.assists
+  end
 end

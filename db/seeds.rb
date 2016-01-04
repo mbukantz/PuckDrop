@@ -57,7 +57,6 @@ x.times do |i|
     statistic.games = rand(70..82)
     statistic.goals = rand(7..55)
     statistic.assists = rand(10..70)
-    statistic.points = statistic.goals + statistic.assists
     statistic.plus_minus = rand(-20..30)
     statistic.atoi = rand(10..26)
     statistic.pims = rand(10..100)
