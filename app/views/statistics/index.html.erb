@@ -1,11 +1,13 @@
 <%= link_to 'Back to Leagues', leagues_path %>
 <%= link_to 'Back to ' "#{@league.name}", league_path(@league)%>
 
-<p>
+<strong><div class="button">Teams</div></strong>
   <%@league.teams.each do |team|%>
-    <a href="/leagues/<%=@league.id%>/teams/<%=team.id%>/statistics"><%=team.full_name%></a>
+    <div class="dropdown">
+      <strong><a href="/leagues/<%=@league.id%>/teams/<%=team.id%>/statistics"><%=team.full_name%></a></strong>
+    </div>
   <%end%>
-</p>
+
 
 <h1><%=@team.full_name%></h1>
 
@@ -37,11 +39,3 @@
     <% end %>
   </tbody>
 </table>
-
-<div class="button">click me</div>
-<div class="dropdown">
-    <a href="#">link1</a>
-    <a href="#">link2</a>
-    <a href="#">link3</a>
-    <a href="#">link4</a>
-</div>
