@@ -1,0 +1,8 @@
+<h1>All Leagues</h1>
+
+<%@leagues.each do |league|%>
+  <p><strong> <a href="/leagues/<%=league.id%>"><%=league.name%></a> </strong><br>
+    Commissioner: <%=league.commissioner%></p>
+<%end%>
+
+<%= link_to 'New League',  new_league_path%>

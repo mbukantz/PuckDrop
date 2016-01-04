@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: standings
+#
+#  id         :integer          not null, primary key
+#  games      :integer
+#  wins       :integer
+#  losses     :integer
+#  team_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  games: 1
+  wins: 1
+  losses: 1
+  win_percentage: 9.99
+
+two:
+  games: 1
+  wins: 1
+  losses: 1
+  win_percentage: 9.99

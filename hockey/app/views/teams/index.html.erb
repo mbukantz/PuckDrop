@@ -1,0 +1,30 @@
+<%= link_to 'Back to Leagues', leagues_path %>
+<%= link_to 'Back to ' "#{@league.name}", league_path(@league)%>
+<h1> <a href="/leagues/<%=@league.id%>"><%="#{@league.name}"%> </a></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Coach</th>
+      <th>Arena</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @league.teams.each do |team| %>
+      <tr>
+        <td><a href="/leagues/<%=team.league_id%>/teams/<%=team.id%>/players"><%= team.full_name%></a></td>
+        <td><%= team.coach%></td>
+        <td><%= team.arena %></td>
+        <td><%= link_to 'Edit', edit_league_team_path(@league,team) %></td>
+        <td><%= link_to 'Delete',  { action: :destroy, id: team.id }, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Team', new_league_team_path %>

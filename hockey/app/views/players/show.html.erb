@@ -1,0 +1,16 @@
+<h1><%=@player.first_name%> <%=@player.last_name%></h1>
+  <h2><a href="/leagues/<%=@player.team.league_id%>/teams/<%=@player.team_id%>/players"><%=@player.team.full_name%></a></h2>
+  <h3><%=@player.position%></h3>
+<p>
+  Hometown: <%=@player.city%>, <%=@player.state%><br>
+  Birthday: <%=@player.birthdate%><br>
+  Age: <%=@player.age%>
+</p>
+
+<p>
+  Height: <%=@player.hgt%><br>
+  Weight: <%=@player.weight%> lbs<br>
+  Shoots: <%=@player.shoots%>
+</p><br>
+
+<td><%= link_to 'Edit Player', edit_league_team_player_path(@player.team.league,@player.team,@player) %></td>

@@ -1,0 +1,63 @@
+<%= form_for [@league,@team,@player] do |f| %>
+  <% if @player.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@player.errors.count, "error") %> prohibited this player from being saved:</h2>
+      <ul>
+      <% @player.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.hidden_field :league_id, value: @league.id %><br>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :team_id, value: @team.id %><br>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :position %><br>
+    <%= f.select :position,['Left Wing','Center','Right Wing','Defense','Goalie'] %>
+  </div>
+  <div class="field">
+    <%= f.label :birthday %><br>
+    <%= f.date_field :birthday %>
+  </div>
+  <div class="field">
+    <%= f.label :height %> (inches)<br>
+    <%= f.text_field :height %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %> (lbs)<br>
+    <%= f.text_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :shoots %><br>
+    <%= f.select :shoots,['Left','Righty'] %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br>
+    <%= f.text_field :state %>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br>
+    <%= f.text_field :country %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

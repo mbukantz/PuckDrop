@@ -1,0 +1,47 @@
+<%= link_to 'Back to Leagues', leagues_path %>
+<%= link_to 'Back to ' "#{@league.name}", league_path(@league)%>
+
+<p>
+  <%@league.teams.each do |team|%>
+    <a href="/leagues/<%=@league.id%>/teams/<%=team.id%>/statistics"><%=team.full_name%></a>
+  <%end%>
+</p>
+
+<h1><%=@team.full_name%></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= sortable "name" %></th>
+      <th><%= sortable "goals" %></th>
+      <th><%= sortable "assists" %></th>
+      <th><%= sortable "points" %></th>
+      <th><%= sortable "plus_minus", "+/-" %></th>
+      <th><%= sortable "atoi", "ATOI" %></th>
+      <th><%= sortable "pims", "PIMs" %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @players.each do |player|%>
+      <tr>
+        <td><%=player.full_name %></td>
+        <td><%=player.statistic.goals %></td>
+        <td><%=player.statistic.assists %></td>
+        <td><%=player.statistic.points %></td>
+        <td><%=player.statistic.plus_minus %></td>
+        <td><%=player.statistic.atoi %></td>
+        <td><%=player.statistic.pims %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="button">click me</div>
+<div class="dropdown">
+    <a href="#">link1</a>
+    <a href="#">link2</a>
+    <a href="#">link3</a>
+    <a href="#">link4</a>
+</div>

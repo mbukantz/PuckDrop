@@ -1,0 +1,36 @@
+<%= link_to 'Back to Leagues', leagues_path %>
+<%= link_to 'Back to ' "#{@league.name}", league_path%>
+
+<h1>League Leaders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Team</th>
+      <th><%= sortable "name" %></th>
+      <th><%= sortable "goals" %></th>
+      <th><%= sortable "assists" %></th>
+      <th><%= sortable "points" %></th>
+      <th><%= sortable "plus_minus", "+/-" %></th>
+      <th><%= sortable "atoi", "ATOI" %></th>
+      <th><%= sortable "pims", "PIMs" %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @statistics.each do |statistic|%>
+      <tr>
+        <td><a href="/leagues/<%=statistic.player.team.league.id%>/teams/<%=statistic.player.team.id%>/players"><%=statistic.player.team.full_name %></a> </td>
+        <td><a href="/leagues/statistic.player.team.league.id/teams/<%=statistic.player.team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a> </td>
+        <td><%=statistic.goals %></td>
+        <td><%=statistic.assists %></td>
+        <td><%=statistic.points %></td>
+        <td><%=statistic.plus_minus %></td>
+        <td><%=statistic.atoi %></td>
+        <td><%=statistic.pims %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @statistics%>
