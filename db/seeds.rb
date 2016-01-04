@@ -32,7 +32,7 @@ x.times do |i|
     team.name = Faker::Team.creature
     team.coach = Faker::Name.name
     team.arena = Faker::University.name
-    team.league_id = rand(1..5)
+    team.league_id = rand(1..z)
     team.save
   end
 
