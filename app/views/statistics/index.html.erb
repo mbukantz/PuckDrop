@@ -29,12 +29,12 @@
     <% @players.each do |player|%>
       <tr>
         <td><%=player.full_name %></td>
-        <td><%=player.statistic.goals %></td>
-        <td><%=player.statistic.assists %></td>
+        <td class = "goals"><%=player.statistic.goals %></td>
+        <td class = "assists"><%=player.statistic.assists %></td>
         <td><%=player.statistic.points %></td>
-        <td><%=player.statistic.plus_minus %></td>
-        <td><%=player.statistic.atoi %></td>
-        <td><%=player.statistic.pims %></td>
+        <td class = "plus_minus"><%=player.statistic.plus_minus %></td>
+        <td class = "atoi"><%=player.statistic.atoi %></td>
+        <td class = "pims"><%=player.statistic.pims %></td>
       </tr>
     <% end %>
   </tbody>
