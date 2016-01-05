@@ -5,6 +5,7 @@ class CreateStandings < ActiveRecord::Migration
       t.integer :wins
       t.integer :losses
       t.integer :team_id
+      t.integer :year_id
       t.timestamps null: false
     end
   end

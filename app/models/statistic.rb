@@ -23,6 +23,7 @@
 
 class Statistic < ActiveRecord::Base
   belongs_to :player
+  belongs_to :year
 
   def points
     self.goals + self.assists

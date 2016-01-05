@@ -1,5 +1,6 @@
 class Standing < ActiveRecord::Base
   belongs_to :team
+  belongs_to :year
   validate :wins_and_losses_sum
 
   def win_percentage

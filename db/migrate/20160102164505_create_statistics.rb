@@ -15,6 +15,7 @@ class CreateStatistics < ActiveRecord::Migration
       t.integer :shots
       t.integer :shutouts
       t.integer :player_id
+      t.integer :year_id
 
       t.timestamps null: false
     end

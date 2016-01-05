@@ -35,6 +35,6 @@ class StandingsController < ApplicationController
   private
 
   def standing_params
-    params.require(:standing).permit(:games,:wins,:losses,:win_percentage)
+    params.require(:standing).permit(:games,:wins,:losses,:win_percentage,:year_id)
   end
 end

@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   end
   get '/leagues/:id/leaders', to: 'statistics#leaders', as: 'leaders'
   root to: "home#index"
+  get '/leagues/:league_id/teams/:team_id/statistics/years/:id', to: 'years#yearly_stats', as: 'yearly'
 end

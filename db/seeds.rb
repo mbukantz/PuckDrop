@@ -10,6 +10,9 @@ x = 100 #teams
 y = 1000 #players
 z = 5 #leagues
 
+
+years = Year.create([{id: 2013},{id: 2014}, {id: 2015}])
+
 z.times do |i|
   league = League.new
   league.name = Faker::App.name
@@ -23,6 +26,7 @@ y.times do |i|
   standing.wins = rand(30..55)
   standing.losses = 82 - standing.wins
   standing.team_id = 1 + i
+  standing.year_id = rand(2013..2015)
   standing.save
 end
 
@@ -61,5 +65,6 @@ x.times do |i|
     statistic.atoi = rand(10..26)
     statistic.pims = rand(10..100)
     statistic.player_id = i + 1
+    statistic.year_id = rand(2013..2015)
     statistic.save
   end

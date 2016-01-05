@@ -62,7 +62,7 @@ class StatisticsController < ApplicationController
   end
 
   def statistic_params
-    params.require(:statistic).permit(:games,:goals,:assists,:points,:plus_minus,:atoi)
+    params.require(:statistic).permit(:games,:goals,:assists,:points,:plus_minus,:atoi,:year_id)
   end
 
 end
