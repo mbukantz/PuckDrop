@@ -1,5 +1,3 @@
-<%= link_to 'Back to Leagues', leagues_path %>
-<%= link_to 'Back to ' "#{@league.name}", league_path(@league)%>
 
 <%= form_for [@league,@team,@statistic] do |f| %>
   <% if @league.errors.any? %>

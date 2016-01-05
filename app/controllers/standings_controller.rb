@@ -17,4 +17,24 @@ class StandingsController < ApplicationController
     @league = League.find(params[:league_id])
     @teams = @league.teams
   end
+
+  def edit
+    @league = League.find params[:league_id]
+    @standing = Standing.find(params[:id])
+  end
+
+  def update
+    @standing = Standing.find(params[:id])
+    if @standing.update(standing_params)
+      redirect_to league_standings_path
+    else
+      render 'edit'
+    end
+  end
+
+  private
+
+  def standing_params
+    params.require(:standing).permit(:games,:wins,:losses,:win_percentage)
+  end
 end

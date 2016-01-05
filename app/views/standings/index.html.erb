@@ -18,11 +18,12 @@
   <tbody>
     <% @teams.sort_by {|team| team.standing.win_percentage}.reverse.each do |team|%>
       <tr>
-        <td><%=team.full_name %></td>
+        <td> <a href="/leagues/<%=@league.id%>/teams/<%=team.id%>/players"><%=team.full_name %></a> </td>
         <td><%=team.standing.games %></td>
         <td><%=team.standing.wins %></td>
         <td><%=team.standing.losses %></td>
         <td><%=team.standing.win_percentage %></td>
+        <td> <a href="/leagues/<%=@league.id%>/standings/<%=team.standing.id%>/edit">Edit</a> </td>
 
       </tr>
     <% end %>

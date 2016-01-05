@@ -33,6 +33,7 @@ class StatisticsController < ApplicationController
   def edit
     @league = League.find params[:league_id]
     @team = Team.find params[:team_id]
+    @players = @team.players
     @statistic = Statistic.find(params[:id])
   end
 

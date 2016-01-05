@@ -1,10 +1,8 @@
 <%= link_to 'Back to Leagues', leagues_path %>
 <%= link_to 'Back to ' "#{@league.name}", league_path(@league)%>
 
-
-<h1><%=@statistic.player.full_name%></h1>
-<h2>Edit Stats</h2>
+<h2>Edit Team Standings</h2>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', league_team_statistics_path %>
+<%= link_to 'Back', league_standings_path %>
