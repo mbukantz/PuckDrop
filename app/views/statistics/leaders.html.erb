@@ -19,7 +19,7 @@
   </thead>
 
   <tbody>
-    <% @statistics.each do |statistic|%>
+    <% @statistics.sort_by {|statistic| statistic.points}.reverse.each do |statistic|%>
       <tr>
         <td><a href="/leagues/<%=statistic.player.team.league.id%>/teams/<%=statistic.player.team.id%>/players"><%=statistic.player.team.full_name %></a> </td>
         <td><a href="/leagues/statistic.player.team.league.id/teams/<%=statistic.player.team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a> </td>
