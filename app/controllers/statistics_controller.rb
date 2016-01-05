@@ -30,6 +30,20 @@ class StatisticsController < ApplicationController
     @players = @team.players
   end
 
+  def edit
+    @league = League.find params[:league_id]
+    @team = Team.find params[:team_id]
+    @statistic = Statistic.find(params[:id])
+  end
+
+  def update
+    @statistic = Statistic.find(params[:id])
+    if @statistic.update(statistic_params)
+      redirect_to league_team_statistics_path
+    else
+      render 'edit'
+    end
+  end
 
   def leaders
     @statistics = Statistic.order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
@@ -45,4 +59,9 @@ class StatisticsController < ApplicationController
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
+
+  def statistic_params
+    params.require(:statistic).permit(:games,:goals,:assists,:points,:plus_minus,:atoi)
+  end
+
 end
