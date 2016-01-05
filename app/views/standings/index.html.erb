@@ -16,7 +16,7 @@
   </thead>
 
   <tbody>
-    <% @teams.each do |team|%>
+    <% @teams.sort_by {|team| team.standing.win_percentage}.reverse.each do |team|%>
       <tr>
         <td><%=team.full_name %></td>
         <td><%=team.standing.games %></td>
