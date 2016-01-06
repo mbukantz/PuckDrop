@@ -1,8 +1,31 @@
-<h1>All Leagues</h1>
+<%=render 'home/header'%>
 
-<%@leagues.each do |league|%>
-  <p><strong> <a href="/leagues/<%=league.id%>"><%=league.name%></a> </strong><br>
-    Commissioner: <%=league.commissioner%></p>
-<%end%>
+<body id="page-top">
 
-<%= link_to 'New League',  new_league_path%>
+<%=render 'home/nav_bar'%>
+
+    <header class = "main">
+        <div class="header-content-main">
+            <div class="header-content-inner-main">
+            </div>
+        </div>
+    </header>
+
+<h2 class = "subject">All Leagues</h2>
+
+<div class= "main-body">
+  <div class="actions">
+    <%@leagues.each do |league|%>
+      <p><strong> <a href="/leagues/<%=league.id%>"><%=league.name%></a> </strong><br>
+        Commissioner: <%=league.commissioner%></p>
+    <%end%>
+  <br>
+    <%= link_to 'New League',  new_league_path, class: "btn btn-primary"%>
+  </div>
+</div>
+
+<%=render 'home/footer'%>
+
+</body>
+
+</html>

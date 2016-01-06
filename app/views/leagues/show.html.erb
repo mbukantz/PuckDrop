@@ -1,9 +1,32 @@
-<h1><%=@league.name%></h1>
+
+
+<%=render 'home/header'%>
+
+<body id="page-top">
+
+<%=render 'home/nav_bar'%>
+
+    <header class = "main">
+        <div class="header-content-main">
+            <div class="header-content-inner-main">
+            </div>
+        </div>
+    </header>
+
+
+    <h2 class = "subject"><%=@league.name%></h2>
 
 <p>
-  <a href="/leagues/<%=@league.id%>/teams/new">New Team</a>
-  <a href="/leagues/<%=@league.id%>/teams">Teams</a>
-  <a href="/leagues/<%=@league.id%>/leaders">Leaders</a>
-  <a href="/leagues/<%=@league.id%>/teams/<%=@league.teams.first.id%>/statistics/years/2015">Statistics</a>
-  <a href="/leagues/<%=@league.id%>/standings">Standings</a>
+    <a href="/leagues/<%=@league.id%>/teams/new", class = "btn btn-primary" >New Team</a>
+    <a href="/leagues/<%=@league.id%>/teams", class = "btn btn-primary">Teams</a>
+    <a href="/leagues/<%=@league.id%>/leaders", class = "btn btn-primary">Leaders</a>
+    <a href="/leagues/<%=@league.id%>/teams/<%=@league.teams.first.id%>/statistics/years/2015", class = "btn btn-primary">Statistics</a>
+    <a href="/leagues/<%=@league.id%>/standings", class = "btn btn-primary">Standings</a>
 </p>
+
+
+<%=render 'home/footer'%>
+
+</body>
+
+</html>

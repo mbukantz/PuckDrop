@@ -49,4 +49,4 @@
 
   <%= link_to 'To Teams', league_teams_path%>
 
-  <%= link_to 'Player Stats', league_team_statistics_path%>
+  <a href="/leagues/<%=@league.id%>/teams/<%=@league.teams.first.id%>/statistics/years/2015">Player Stats</a>

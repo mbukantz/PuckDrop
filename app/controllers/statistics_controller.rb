@@ -24,12 +24,24 @@
 class StatisticsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
-  def index
-    @league = League.find(params[:league_id])
-    @team = Team.find(params[:team_id])
-    @players = @team.players
+  def new
+    @league = League.find params[:league_id]
+    @team = Team.find params[:team_id]
+    @statistic = Statistic.new
+    @players = Player.where("team_id = ?", @team.id)
+    @years = Year.all
   end
 
+  def create
+    @league = League.find params[:league_id]
+    @team = Team.find params[:team_id]
+    @statistic = Statistic.new(statistic_params)
+    if @statistic.save
+      redirect_to yearly_path(@league.id, @team.id,  @statistic.year.id)
+    else
+      render 'new'
+    end
+  end
   def edit
     @league = League.find params[:league_id]
     @team = Team.find params[:team_id]
@@ -38,9 +50,11 @@ class StatisticsController < ApplicationController
   end
 
   def update
+    @league = League.find params[:league_id]
+    @team = Team.find params[:team_id]
     @statistic = Statistic.find(params[:id])
     if @statistic.update(statistic_params)
-      redirect_to league_team_statistics_path
+      redirect_to yearly_path(@league.id, @team.id,  @statistic.year.id)
     else
       render 'edit'
     end
@@ -62,7 +76,7 @@ class StatisticsController < ApplicationController
   end
 
   def statistic_params
-    params.require(:statistic).permit(:games,:goals,:assists,:points,:plus_minus,:atoi,:year_id)
+    params.require(:statistic).permit(:games,:goals,:assists,:points,:plus_minus,:atoi,:player_id,:year_id)
   end
 
 end

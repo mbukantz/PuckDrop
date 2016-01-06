@@ -1,14 +1,28 @@
-<%= link_to 'Back to Leagues', leagues_path %>
-<%= link_to 'Back to ' "#{@league.name}", league_path(@league)%>
-<h1> <a href="/leagues/<%=@league.id%>"><%="#{@league.name}"%> </a></h1>
+<!-- <%= link_to 'Back to Leagues', leagues_path %>
+<%= link_to 'Back to ' "#{@league.name}", league_path(@league)%> -->
 
-<table>
+<%=render 'home/header'%>
+
+<body id="page-top">
+
+<%=render 'home/nav_bar'%>
+
+    <header class = "main">
+        <div class="header-content-main">
+            <div class="header-content-inner-main">
+            </div>
+        </div>
+    </header>
+
+<h2 class = "subject"><a href="/leagues/<%=@league.id%>"><%="#{@league.name}"%> </a></h2>
+
+<table class="table-format">
   <thead>
     <tr>
       <th>Name</th>
       <th>Coach</th>
       <th>Arena</th>
-      <th colspan="3"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -25,6 +39,11 @@
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Team', new_league_team_path %>
+<%=render 'home/footer'%>
+
+</body>
+
+</html>
+
+<!-- <%= link_to 'New Team', new_league_team_path %> -->

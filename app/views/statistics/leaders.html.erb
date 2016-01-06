@@ -1,7 +1,18 @@
-<%= link_to 'Back to Leagues', leagues_path %>
-<%= link_to 'Back to ' "#{@league.name}", league_path%>
 
-<h1>League Leaders</h1>
+<%=render 'home/header'%>
+
+<body id="page-top">
+
+<%=render 'home/nav_bar'%>
+
+    <header class = "main">
+        <div class="header-content-main">
+            <div class="header-content-inner-main">
+            </div>
+        </div>
+    </header>
+
+<h2 class = "subject">League Leaders</h2>
 
 <table>
   <thead>
@@ -34,3 +45,9 @@
   </tbody>
 </table>
 <%= will_paginate @statistics%>
+
+<%=render 'home/footer'%>
+
+</body>
+
+</html>
