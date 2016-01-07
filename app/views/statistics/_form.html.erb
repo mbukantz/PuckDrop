@@ -11,8 +11,9 @@
     </div>
   <% end %>
 
-  <%= f.collection_select :player_id, @players, :id, :full_name, include_blank: true %>
-
+  <div class="field">
+    <%= f.collection_select :player_id, @players, :id, :full_name, include_blank: true %>
+  </div>
   <div class="field">
     <%= f.label :games %><br>
     <%= f.number_field :games %>
@@ -37,10 +38,12 @@
     <%= f.label :pims %><br>
     <%= f.number_field :pims %>
   </div>
-
+  <div class="field">
     <%= f.collection_select :year_id, @years, :id, :id, include_blank: true %>
+  </div>
 
   <br><div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary
+    " %>
   </div>
 <% end %>

@@ -1,18 +1,76 @@
-<h1><%=@player.first_name%> <%=@player.last_name%></h1>
-  <h2><a href="/leagues/<%=@player.team.league_id%>/teams/<%=@player.team_id%>/players"><%=@player.team.full_name%></a></h2>
-  <h3><%=@player.position%></h3>
-<p>
-  Hometown: <%=@player.city%>, <%=@player.state%><br>
-  Birthday: <%=@player.birthdate%><br>
-  Age: <%=@player.age%>
-</p>
 
-<p>
-  Height: <%=@player.hgt%><br>
-  Weight: <%=@player.weight%> lbs<br>
-  Shoots: <%=@player.shoots%>
-</p><br>
+<%=render 'home/header'%>
 
-<td><%= link_to 'Edit Player', edit_league_team_player_path(@player.team.league,@player.team,@player) %></td>
+<body id="page-top">
 
-<td><a href="/leagues/<%=@league.id%>/teams/<%=@league.teams.first.id%>/statistics/years/2015">Back</a></td>
+<%=render 'home/nav_bar'%>
+
+    <header class = "main">
+        <div class="header-content-main">
+            <div class="header-content-inner-main">
+            </div>
+        </div>
+    </header>
+
+<h2 class = "subject"><%=@player.full_name%></h2>
+
+  <h3 class = "subject"><a href="/leagues/<%=@player.team.league_id%>/teams/<%=@player.team_id%>/players"><%=@player.team.full_name%></a></h2>
+
+  <h3 class = "subject"><%=@player.position%></h3>
+
+    <p class = "subject">
+      Hometown: <%=@player.city%>, <%=@player.state%><br>
+      Birthday: <%=@player.birthdate%><br>
+      Age: <%=@player.age%>
+    </p>
+
+    <p class = "subject">
+      Height: <%=@player.hgt%><br>
+      Weight: <%=@player.weight%> lbs<br>
+      Shoots: <%=@player.shoots%>
+    </p>
+
+  <h3 class = "subject">Stats</h3>
+
+  <table class = "table-format-2">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Year</th>
+        <th>Games</th>
+        <th>Goals</th>
+        <th>Assists</th>
+        <th>Points</th>
+        <th>+/-</th>
+        <th>ATOI</th>
+        <th>PIMs</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%@player.statistics.sort_by{|stat| stat.year}.each do |statistic|%>
+        <tr>
+          <td><%=statistic.player.full_name %></td>
+          <td> <a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/statistics/years/<%=statistic.year.id%>"><%=statistic.year.id %></a> </td>
+          <td><%=statistic.games %></td>
+          <td><%=statistic.goals %></td>
+          <td><%=statistic.assists %></td>
+          <td><%=statistic.points %></td>
+          <td><%=statistic.plus_minus %></td>
+          <td><%=statistic.atoi %></td>
+          <td><%=statistic.pims %></td>
+          <td> <a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/statistics/<%=statistic.id%>/edit">Edit</a> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table><br>
+
+<td><%= link_to 'Edit Player', edit_league_team_player_path(@player.team.league,@player.team,@player), class: "btn"%></td>
+
+
+<%=render 'home/footer'%>
+
+</body>
+
+</html>

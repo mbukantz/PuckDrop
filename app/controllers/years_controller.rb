@@ -4,8 +4,17 @@ class YearsController < ApplicationController
     @league = League.find(params[:league_id])
     @team = Team.find(params[:team_id])
     @year = Year.find(params[:id])
-    @statistics = @team.statistics.where("year_id = ?", @year.id)
+    @statistics = @team.statistics.where("year_id = ?", @year.id).order(sort_column + " " + sort_direction)
     @years = Year.all
+  end
+
+  private
+  def sort_column
+    Statistic.column_names.include?(params[:sort]) ? params[:sort] : "Goals"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
 
 end

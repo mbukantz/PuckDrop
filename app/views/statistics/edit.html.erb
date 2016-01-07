@@ -1,9 +1,19 @@
-<%= link_to 'Back to Leagues', leagues_path %>
-<%= link_to 'Back to ' "#{@league.name}", league_path(@league)%>
+<%=render 'home/header'%>
 
+<body id="page-top">
 
-<h1><%=@statistic.player.full_name%></h1>
-<h2>Edit Stats</h2>
+<%=render 'home/nav_bar'%>
+
+    <header class = "main">
+        <div class="header-content-main">
+            <div class="header-content-inner-main">
+            </div>
+        </div>
+    </header>
+
+<h2 class = "subject"><%=@statistic.player.full_name%></h2>
+
+  <h3 class = "subject"><%=@statistic.year_id%></h2>
 
 
 <%= form_for [@league,@team,@statistic] do |f| %>
@@ -44,9 +54,15 @@
   </div>
 
   <br><div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary
+    "%>
   </div>
 <% end %>
 
+<a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/statistics/years/<%=@statistic.year_id%>" class = "btn">Back</a>
 
-<%= link_to 'Back', league_team_statistics_path %>
+<%=render 'home/footer'%>
+
+</body>
+
+</html>

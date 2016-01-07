@@ -1,5 +1,3 @@
-<!-- <%= link_to 'Back to Leagues', leagues_path %>
-<%= link_to 'Back to ' "#{@league.name}", league_path(@league)%> -->
 
 <%=render 'home/header'%>
 
@@ -13,6 +11,11 @@
             </div>
         </div>
     </header>
+
+<div class="links">
+  <%= link_to 'Back to Leagues', leagues_path , class: "btn"%>
+  <%= link_to 'Back to ' "#{@league.name}", league_path(@league), class: "btn"%>
+</div>
 
 <h2 class = "subject"><a href="/leagues/<%=@league.id%>"><%="#{@league.name}"%> </a></h2>
 
@@ -37,13 +40,12 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table><br>
 
+<%= link_to 'New Team', new_league_team_path , class: "btn"%><br><br><br>
 
 <%=render 'home/footer'%>
 
 </body>
 
 </html>
-
-<!-- <%= link_to 'New Team', new_league_team_path %> -->

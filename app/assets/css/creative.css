@@ -426,12 +426,30 @@ fieldset[disabled] .btn-default.active {
 
 .subject {
   padding-left: 30px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
-table {
-  margin: 35px;
+.button {
+  padding-left: 30px;
+}
+
+.links {
+  padding-left: 30px;
+}
+
+.table-format {
+  margin-left: 35px;
+  margin-top: 35px;
   width: 75%;
-  height:100%;
+  height: 75%;
+}
+
+.table-format-2 {
+  margin-left: 35px;
+  margin-top: 35px;
+  width: 75%;
+  height: 20%;
 }
 
 tr:nth-child(even){background-color: #f2f2f2}

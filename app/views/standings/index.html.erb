@@ -1,8 +1,23 @@
-<%= link_to 'Back to Leagues', leagues_path %>
+<%=render 'home/header'%>
 
-<h1><%=@league.name%> Standings</h1>
+<body id="page-top">
 
-<table>
+<%=render 'home/nav_bar'%>
+
+    <header class = "main">
+        <div class="header-content-main">
+            <div class="header-content-inner-main">
+            </div>
+        </div>
+    </header>
+
+    <div class="links">
+      <%= link_to 'Back to ' "#{@league.name}", league_path(@league), class: "btn"%>
+    </div>
+
+<h2 class = "subject"><%=@league.name%> Standings</h2>
+
+<table class = "table-format">
   <thead>
     <tr>
 
@@ -29,3 +44,10 @@
     <% end %>
   </tbody>
 </table>
+
+
+<%=render 'home/footer'%>
+
+</body>
+
+</html>
