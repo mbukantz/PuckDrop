@@ -58,13 +58,23 @@ x.times do |i|
 
   y.times do |i|
     statistic = Statistic.new
-    statistic.games = rand(70..82)
-    statistic.goals = rand(7..55)
-    statistic.assists = rand(10..70)
-    statistic.plus_minus = rand(-20..30)
-    statistic.atoi = rand(10..26)
-    statistic.pims = rand(10..100)
     statistic.player_id = i + 1
-    statistic.year_id = rand(2013..2015)
+    if statistic.player.position != "Goalie"
+      statistic.games = rand(70..82)
+      statistic.goals = rand(7..55)
+      statistic.assists = rand(10..70)
+      statistic.plus_minus = rand(-20..30)
+      statistic.atoi = rand(10..26)
+      statistic.pims = rand(10..100)
+      statistic.player_id = i + 1
+      statistic.year_id = rand(2013..2015)
+    else
+      statistic.wins = rand(20..42)
+      statistic.losses = rand(14.35)
+      statistic.gaa = rand(2.00..3.10)
+      statistic.saves = rand(300..500)
+      statistic.shots = rand((1.1*statistic.saves)..(1.2*statistic.saves))
+      statistic.shutouts = rand(1..8)
+    end
     statistic.save
   end

@@ -6,6 +6,9 @@ class YearsController < ApplicationController
     @year = Year.find(params[:id])
     @statistics = @team.statistics.where("year_id = ?", @year.id).order(sort_column + " " + sort_direction)
     @years = Year.all
+    @statistic = Statistic.new
+    @players = Player.where("team_id = ?", @team.id)
+    @player = Player.new
   end
 
   private
