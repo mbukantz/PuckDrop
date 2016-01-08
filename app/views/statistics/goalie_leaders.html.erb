@@ -17,14 +17,14 @@
   </div>
 
 
-<h2 class = "subject">Skater Leaders</h2>
+<h2 class = "subject">Goalie Leaders</h2>
 
 <h3 class = "subject"><%=@year.id%></h3>
 
 <strong><div class="button">Years</div></strong>
   <%@years.each do |year|%>
     <div class="dropdown">
-      <strong><a href="/leagues/<%=@league.id%>/statistics/years/<%=year.id%>/leaders"><%=year.id%></a></strong>
+      <strong><a href="/leagues/<%=@league.id%>/statistics/years/<%=year.id%>/goalie_leaders"><%=year.id%></a></strong>
     </div>
   <%end%>
 
@@ -34,28 +34,30 @@
       <th><%= sortable "name" %></th>
       <th>Team</th>
       <th>Position</th>
-      <th><%= sortable "goals" %></th>
-      <th><%= sortable "assists" %></th>
-      <th><%= sortable "points" %></th>
-      <th><%= sortable "plus_minus", "+/-" %></th>
-      <th><%= sortable "atoi", "ATOI" %></th>
-      <th><%= sortable "pims", "PIMs" %></th>
+      <th><%= sortable "wins" %></th>
+      <th><%= sortable "losses" %></th>
+      <th><%= sortable "gaa" %></th>
+      <th><%= sortable "saves" %></th>
+      <th><%= sortable "shots" %></th>
+      <th><%= sortable "save_percentage" %></th>
+      <th><%= sortable "shutouts"%></th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @statistics.sort_by {|statistic| statistic.points.to_i}.reverse.each do |statistic|%>
+    <% @g_statistics.sort_by {|statistic| statistic.wins.to_i}.reverse.each do |statistic|%>
       <tr>
         <td><a href="/leagues/statistic.player.team.league.id/teams/<%=statistic.player.team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a> </td>
         <td><a href="/leagues/<%=statistic.player.team.league.id%>/teams/<%=statistic.player.team.id%>/players"><%=statistic.player.team.full_name %></a> </td>
         <td><%=statistic.player.position%></td>
-        <td><%=statistic.goals %></td>
-        <td><%=statistic.assists %></td>
-        <td><%=statistic.points %></td>
-        <td><%=statistic.plus_minus %></td>
-        <td><%=statistic.atoi %></td>
-        <td><%=statistic.pims %></td>
+        <td><%=statistic.wins %></td>
+        <td><%=statistic.losses %></td>
+        <td><%=statistic.gaa.to_f.round(2) %></td>
+        <td><%=statistic.saves %></td>
+        <td><%=statistic.shots %></td>
+        <td><%=statistic.save_percentage %></td>
+        <td><%=statistic.shutouts %></td>
       </tr>
     <% end %>
   </tbody>

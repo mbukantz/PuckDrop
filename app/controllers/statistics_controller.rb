@@ -17,6 +17,7 @@
 #  shots      :integer
 #  shutouts   :integer
 #  player_id  :integer
+#  year_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -61,8 +62,30 @@ class StatisticsController < ApplicationController
   end
 
   def leaders
-    @statistics = Statistic.order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
-    @league = League.find(params[:id])
+    filtered_statistics = []
+    @league = League.find(params[:league_id])
+    @year = Year.find(params[:year_id])
+    @years = Year.all
+    @teams = Team.where('league_id = ?', @league.id)
+    @teams.each do |team|
+      filtered_statistics << team.statistics
+    end
+    statistics = filtered_statistics.flatten
+    @statistics = Statistic.where(id: statistics.map(&:id)).where("year_id = ?", @year.id).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
+  end
+
+  def goalie_leaders
+    filtered_statistics = []
+    @league = League.find(params[:league_id])
+    @year = Year.find(params[:year_id])
+    @years = Year.all
+    @teams = Team.where('league_id = ?', @league.id)
+    @teams.each do |team|
+      filtered_statistics << team.statistics
+    end
+    statistics = filtered_statistics.flatten
+    @statistics = Statistic.where(id: statistics.map(&:id)).where("year_id = ?", @year.id).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
+    @g_statistics = Statistic.where(id: statistics.map(&:id)).where("year_id = ?", @year.id).order("Wins" + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
   end
 
   private

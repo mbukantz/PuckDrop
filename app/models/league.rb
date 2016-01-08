@@ -12,4 +12,5 @@
 class League < ActiveRecord::Base
   has_many :teams
   has_one :standings
+  has_many :players, through: :teams
 end

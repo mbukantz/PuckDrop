@@ -17,6 +17,7 @@
 #  shots      :integer
 #  shutouts   :integer
 #  player_id  :integer
+#  year_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -26,6 +27,15 @@ class Statistic < ActiveRecord::Base
   belongs_to :year
 
   def points
-    self.goals + self.assists
+    if self.player.position != "Goalie"
+      self.goals + self.assists
+    end
+  end
+
+  def save_percentage
+    if self.player.position == "Goalie"
+      save_pct = self.saves.to_f / self.shots.to_f
+      save_pct.round(3)
+    end
   end
 end

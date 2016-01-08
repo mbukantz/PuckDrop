@@ -75,6 +75,8 @@ x.times do |i|
       statistic.saves = rand(300..500)
       statistic.shots = rand((1.1*statistic.saves)..(1.2*statistic.saves))
       statistic.shutouts = rand(1..8)
+      statistic.player_id = i + 1
+      statistic.year_id = rand(2013..2015)
     end
     statistic.save
   end

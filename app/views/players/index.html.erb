@@ -46,7 +46,7 @@
       <tbody>
           <%@team.players.each do |player| %>
           <tr>
-            <td><a href="/leagues/<%=player.team.league.id%>/teams/<%=player.team_id%>/players/<%=player.id%>"><%=player.full_name%></a> </td>
+            <td><a href="/leagues/<%=player.team.league.id%>/teams/<%=player.team.id%>/players/<%=player.id%>"><%=player.full_name%></a> </td>
             <td><%= player.position %></td>
             <td><%= player.hgt %></td>
             <td><%= player.weight %></td>

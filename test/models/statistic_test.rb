@@ -17,6 +17,7 @@
 #  shots      :integer
 #  shutouts   :integer
 #  player_id  :integer
+#  year_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
