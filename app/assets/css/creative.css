@@ -442,7 +442,7 @@ fieldset[disabled] .btn-default.active {
   margin-left: 35px;
   margin-top: 35px;
   width: 75%;
-  height: 75%;
+  height: auto;
 }
 
 .table-format-2 {

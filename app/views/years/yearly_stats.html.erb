@@ -15,64 +15,122 @@
     <%= link_to 'Back to ' "#{@league.name}", league_path(@league), class: "btn"%>
   </div>
 
-<h2 class = "subject"><%=@team.full_name%></a></h2>
+<div class = "content">
 
-<h3 class = "subject"><%=@year.id%></h3>
+  <div class="links">
+    <span class = "skater-toggle"><%= link_to 'Skater', '#', class: "btn"%></span>
+    <span class = "goalie-toggle"><%= link_to 'Goalie', '#', class: "btn"%></span>
+  </div>
 
-<strong><div class="button">Years</div></strong>
-  <%@years.each do |year|%>
-    <div class="dropdown">
-      <strong><a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/statistics/years/<%=year.id%>"><%=year.id%></a></strong>
+  <h2 class = "subject"><%=@team.full_name%></a></h2>
+
+  <h3 class = "subject"><%=@year.id%></h3>
+
+  <strong><div class="button">Years</div></strong>
+    <%@years.each do |year|%>
+      <div class="dropdown">
+        <strong><a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/statistics/years/<%=year.id%>"><%=year.id%></a></strong>
+      </div>
+    <%end%>
+
+  <div class = "skater"%>
+    <table class = "table-format">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Games</th>
+          <th>Goals</th>
+          <th>Assists</th>
+          <th>Points</th>
+          <th>+/-</th>
+          <th>ATOI</th>
+          <th>PIMs</th>
+          <th>Year</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @statistics.sort_by{|stat| stat.points}.reverse.each do |statistic|%>
+          <tr>
+            <td> <a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a> </td>
+            <td><%=statistic.games %></td>
+            <td><%=statistic.goals %></td>
+            <td><%=statistic.assists %></td>
+            <td><%=statistic.points %></td>
+            <td><%=statistic.plus_minus %></td>
+            <td><%=statistic.atoi %></td>
+            <td><%=statistic.pims %></td>
+            <td> <a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/statistics/<%=statistic.id%>/edit">Edit</a> </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table><br>
+
+    <div class = "links-end">
+      <%= link_to 'Add Player' , new_league_team_player_path, class: "btn btn-special btn-player" %>
+
+      <%= link_to 'Add Statistic' , '#', class: "btn btn-special btn-stat" %>
     </div>
-  <%end%>
 
+    <div class="hidden">
+      <%=render '/players/form'%>
+    </div>
 
-<table class = "table-format">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Games</th>
-      <th>Goals</th>
-      <th>Assists</th>
-      <th>Points</th>
-      <th>+/-</th>
-      <th>ATOI</th>
-      <th>PIMs</th>
-      <th>Year</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="hidden">
+      <%=render '/statistics/form'%>
+    </div>
+  </div>
 
-  <tbody>
-    <% @statistics.sort_by{|stat| stat.points}.reverse.each do |statistic|%>
-      <tr>
-        <td> <a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a> </td>
-        <td><%=statistic.games %></td>
-        <td><%=statistic.goals %></td>
-        <td><%=statistic.assists %></td>
-        <td><%=statistic.points %></td>
-        <td><%=statistic.plus_minus %></td>
-        <td><%=statistic.atoi %></td>
-        <td><%=statistic.pims %></td>
-        <td> <a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/statistics/<%=statistic.id%>/edit">Edit</a> </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table><br>
+  <div class = "goalie hidden"%>
+    <table class = "table-format">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Team</th>
+          <th>Position</th>
+          <th>Wins</th>
+          <th>Losses</th>
+          <th>GAA</th>
+          <th>Saves</th>
+          <th>Shots</th>
+          <th>Save %</th>
+          <th>Shutouts</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<div class = "links-end">
-  <%= link_to 'Add Player' , new_league_team_player_path, class: "btn btn-special btn-player" %>
+      <tbody>
+        <% @statistics.sort_by{|stat| stat.points}.reverse.each do |statistic|%>
+          <tr>
+            <td><a href="/leagues/statistic.player.team.league.id/teams/<%=statistic.player.team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a> </td>
+            <td><a href="/leagues/<%=statistic.player.team.league.id%>/teams/<%=statistic.player.team.id%>/players"><%=statistic.player.team.full_name %></a> </td>
+            <td><%=statistic.player.position%></td>
+            <td><%=statistic.wins %></td>
+            <td><%=statistic.losses %></td>
+            <td><%=statistic.gaa.to_f.round(2) %></td>
+            <td><%=statistic.saves %></td>
+            <td><%=statistic.shots %></td>
+            <td><%=statistic.save_percentage %></td>
+            <td><%=statistic.shutouts %></td>
+        <% end %>
+      </tbody>
+    </table><br>
 
-  <%= link_to 'Add Statistic' , '#', class: "btn btn-special btn-stat" %>
-</div>
+    <div class = "links-end">
+      <%= link_to 'Add Goalie' , new_league_team_player_path, class: "btn btn-special btn-player" %>
 
-<div class="hidden">
-  <%=render '/players/form'%>
-</div>
+      <%= link_to 'Add Statistic' , '#', class: "btn btn-special btn-stat" %>
+    </div>
 
+    <div class="hidden">
+      <%=render '/players/form'%>
+    </div>
 
-<div class="hidden">
-  <%=render '/statistics/form'%>
+    <div class="hidden">
+      <%=render '/statistics/form'%>
+    </div>
+  </div>
 </div>
 
 
