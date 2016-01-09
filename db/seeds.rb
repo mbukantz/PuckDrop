@@ -70,10 +70,10 @@ x.times do |i|
       statistic.year_id = rand(2013..2015)
     else
       statistic.wins = rand(20..42)
-      statistic.losses = rand(14.35)
+      statistic.losses = rand(14..35)
       statistic.gaa = rand(2.00..3.10)
       statistic.saves = rand(300..500)
-      statistic.shots = rand((1.1*statistic.saves)..(1.2*statistic.saves))
+      statistic.shots = rand((1.07*statistic.saves)..(1.11*statistic.saves))
       statistic.shutouts = rand(1..8)
       statistic.player_id = i + 1
       statistic.year_id = rand(2013..2015)

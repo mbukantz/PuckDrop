@@ -14,6 +14,8 @@
 
     <div class="links">
       <%= link_to 'Back to ' "#{@league.name}", league_path(@league), class: "btn"%>
+      <%= link_to 'Standings', league_standings_path(@league), class: "btn"%>
+      <%= link_to 'Teams', league_teams_path(@league,@team), class: "btn" %>
     </div><br>
 
   <div class = "content">
@@ -21,6 +23,7 @@
       <span class = "skater-toggle"><%= link_to 'Skater', '#', class: "btn"%></span>
       <span class = "goalie-toggle"><%= link_to 'Goalie', '#', class: "btn"%></span>
     </div>
+  </div>
 
   <div class = "skater">
 
@@ -55,7 +58,7 @@
         <% @statistics.sort_by {|statistic| statistic.points.to_i}.reverse.each do |statistic|%>
           <tr>
             <td><a href="/leagues/statistic.player.team.league.id/teams/<%=statistic.player.team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a> </td>
-            <td><a href="/leagues/<%=statistic.player.team.league.id%>/teams/<%=statistic.player.team.id%>/players"><%=statistic.player.team.full_name %></a> </td>
+            <td><a href="/leagues/<%=statistic.player.team.league.id%>/teams/<%=statistic.player.team.id%>/statistics/years/2015"><%=statistic.player.team.full_name %></a> </td>
             <td><%=statistic.player.position%></td>
             <td><%=statistic.goals %></td>
             <td><%=statistic.assists %></td>
@@ -118,7 +121,6 @@
     </table>
     <%= will_paginate @statistics%>
   </div>
-</div>
 
 <%=render 'home/footer'%>
 

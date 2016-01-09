@@ -13,6 +13,9 @@
 
   <div class="links">
     <%= link_to 'Back to ' "#{@league.name}", league_path(@league), class: "btn"%>
+    <a href="/leagues/<%=@league.id%>/statistics/years/2015/leaders" class= "btn">League Leaders</a>
+    <%= link_to 'Standings', league_standings_path(@league), class: "btn"%>
+    <%= link_to 'Teams', league_teams_path(@league,@team), class: "btn" %>
   </div>
 
 <div class = "content">
@@ -21,6 +24,7 @@
     <span class = "skater-toggle"><%= link_to 'Skater', '#', class: "btn"%></span>
     <span class = "goalie-toggle"><%= link_to 'Goalie', '#', class: "btn"%></span>
   </div>
+</div>
 
   <h2 class = "subject"><%=@team.full_name%></a></h2>
 
@@ -51,7 +55,7 @@
       </thead>
 
       <tbody>
-        <% @statistics.sort_by{|stat| stat.points}.reverse.each do |statistic|%>
+        <% @statistics.sort_by{|stat| stat.points.to_i}.reverse.each do |statistic|%>
           <tr>
             <td> <a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a> </td>
             <td><%=statistic.games %></td>
@@ -101,7 +105,7 @@
       </thead>
 
       <tbody>
-        <% @statistics.sort_by{|stat| stat.points}.reverse.each do |statistic|%>
+        <% @statistics.sort_by{|stat| stat.wins.to_i}.reverse.each do |statistic|%>
           <tr>
             <td><a href="/leagues/statistic.player.team.league.id/teams/<%=statistic.player.team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a> </td>
             <td><a href="/leagues/<%=statistic.player.team.league.id%>/teams/<%=statistic.player.team.id%>/players"><%=statistic.player.team.full_name %></a> </td>
@@ -131,7 +135,6 @@
       <%=render '/statistics/form'%>
     </div>
   </div>
-</div>
 
 
 <%=render 'home/footer'%>

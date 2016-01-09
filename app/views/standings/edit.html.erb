@@ -12,13 +12,14 @@
             </div>
         </div>
     </header>
-    
+
     <div class="links">
       <%= link_to 'Back to ' "#{@league.name}", league_path(@league), class: "btn"%>
     </div>
 
 
 <h2 class = "subject">Edit Team Standings</h2>
+<h3 class = "subject"><%=@standing.team.full_name%></h3>
 
 <%= render 'form' %>
 
