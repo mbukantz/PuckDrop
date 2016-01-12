@@ -28,4 +28,8 @@ class Standing < ActiveRecord::Base
       errors.add(:games, "Wins and Losses must equal Games")
     end
   end
+
+  def games
+    self.wins + self.losses
+  end
 end

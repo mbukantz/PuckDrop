@@ -57,7 +57,7 @@
       <tbody>
         <% @statistics.sort_by {|statistic| statistic.points.to_i}.reverse.each do |statistic|%>
           <tr>
-            <td><a href="/leagues/statistic.player.team.league.id/teams/<%=statistic.player.team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a> </td>
+            <td><a href="/leagues/<%=statistic.player.team.league.id%>/teams/<%=statistic.player.team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a> </td>
             <td><a href="/leagues/<%=statistic.player.team.league.id%>/teams/<%=statistic.player.team.id%>/statistics/years/2015"><%=statistic.player.team.full_name %></a> </td>
             <td><%=statistic.player.position%></td>
             <td><%=statistic.goals %></td>

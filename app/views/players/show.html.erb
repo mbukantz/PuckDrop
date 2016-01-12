@@ -35,7 +35,6 @@
   <table class = "table-format-2">
     <thead>
       <tr>
-        <th>Name</th>
         <th>Year</th>
         <th>Games</th>
         <th>Goals</th>
@@ -51,7 +50,6 @@
     <tbody>
       <%@player.statistics.sort_by{|stat| stat.year}.each do |statistic|%>
         <tr>
-          <td><%=statistic.player.full_name %></td>
           <td> <a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/statistics/years/<%=statistic.year.id%>"><%=statistic.year.id %></a> </td>
           <td><%=statistic.games %></td>
           <td><%=statistic.goals %></td>
