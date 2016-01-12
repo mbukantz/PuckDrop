@@ -47,6 +47,14 @@
   </tbody>
 </table>
 
+<div class = "links-end">
+  <%= link_to 'Add Team' , new_league_team_path, class: "btn btn-special btn-team" %>
+</div>
+
+<div class="hidden">
+  <%=render '/teams/form'%>
+</div>
+
 <%=render 'home/footer'%>
 
 </body>

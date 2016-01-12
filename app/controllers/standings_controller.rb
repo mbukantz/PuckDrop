@@ -16,6 +16,7 @@ class StandingsController < ApplicationController
 
   def index
     @league = League.find(params[:league_id])
+    @team = Team.new
     @teams = @league.teams
   end
 
@@ -29,6 +30,7 @@ class StandingsController < ApplicationController
     if @standing.update(standing_params)
       redirect_to league_standings_path
     else
+      @league = League.find(params[:league_id])
       render 'edit'
     end
   end

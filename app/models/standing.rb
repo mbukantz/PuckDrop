@@ -16,6 +16,8 @@ class Standing < ActiveRecord::Base
   belongs_to :team
   belongs_to :year
   validate :wins_and_losses_sum
+  validates :wins, presence: true
+  validates :losses, presence: true
 
   def win_percentage
     (self.wins/ (self.wins + self.losses).to_f).round(3)
@@ -23,7 +25,7 @@ class Standing < ActiveRecord::Base
 
   def wins_and_losses_sum
     if self.wins + self.losses != self.games
-      errors.add(:league, "Wins and Losses must equal Games")
+      errors.add(:games, "Wins and Losses must equal Games")
     end
   end
 end

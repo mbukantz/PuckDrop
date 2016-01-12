@@ -37,9 +37,11 @@ class PlayersController < ApplicationController
   end
 
   def create
+    @league = League.find params[:league_id]
+    @team = Team.find params[:team_id]
     @player = Player.new(player_params)
     if @player.save
-      redirect_to league_team_players_path
+      redirect_to league_team_players_path(@league,@team,@player)
     else
       render 'new'
     end
