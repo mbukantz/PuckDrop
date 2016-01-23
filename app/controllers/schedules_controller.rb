@@ -16,6 +16,21 @@ class SchedulesController < ApplicationController
     end
   end
 
+  def edit
+    @league = League.find params[:league_id]
+    @schedule = Schedule.find(params[:id])
+  end
+
+  def update
+    @schedule = Schedule.find(params[:id])
+    if @schedule.update(schedule_params)
+      redirect_to league_schedules_path
+    else
+      @league = League.find(params[:league_id])
+      render 'edit'
+    end
+  end
+
   def index
     @league = League.find(params[:league_id])
     @schedule = Schedule.new
