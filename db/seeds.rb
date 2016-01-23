@@ -6,8 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+w = 5000 #games/schedules
 x = 100 #teams
-y = 1000 #players
+y = 2000 #players
 z = 5 #leagues
 
 
@@ -20,6 +21,34 @@ z.times do |i|
   league.save
 end
 
+x.times do |i|
+  team = Team.new
+  team.city = Faker::Team.state
+  team.name = Faker::Team.creature
+  team.coach = Faker::Name.name
+  team.arena = Faker::University.name
+  team.league_id = rand(1..z)
+  team.save
+end
+
+w.times do |i|
+  schedule = Schedule.new
+  schedule.hometeam = rand(1..x)
+  away = rand(1..x)
+    if away != schedule.hometeam
+      schedule.awayteam = away
+    else
+      schedule.awayteam = rand(1..x)
+    end
+  schedule.date = Faker::Date.between(3.years.ago, Date.today)
+  schedule.homegoals = rand(0..6)
+  schedule.awaygoals = rand(0..6)
+  schedule.league_id = rand(1..5)
+  schedule.hometeam_league_id = Team.find(schedule.hometeam).league_id
+  schedule.awayteam_league_id = Team.find(schedule.awayteam).league_id
+  schedule.save
+end
+
 y.times do |i|
   standing = Standing.new
   standing.games = 82
@@ -30,15 +59,7 @@ y.times do |i|
   standing.save
 end
 
-x.times do |i|
-  team = Team.new
-    team.city = Faker::Team.state
-    team.name = Faker::Team.creature
-    team.coach = Faker::Name.name
-    team.arena = Faker::University.name
-    team.league_id = rand(1..z)
-    team.save
-  end
+
 
   y.times do |i|
     player = Player.new

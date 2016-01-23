@@ -19,6 +19,7 @@ class YearsController < ApplicationController
     @statistic = Statistic.new
     @players = Player.where("team_id = ?", @team.id)
     @player = Player.new
+    
   end
 
   private

@@ -18,6 +18,7 @@ class StandingsController < ApplicationController
     @league = League.find(params[:league_id])
     @team = Team.new
     @teams = @league.teams
+    @standing = @team.standing
   end
 
   def edit

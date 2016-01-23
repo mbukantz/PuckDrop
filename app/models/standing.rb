@@ -15,6 +15,7 @@
 class Standing < ActiveRecord::Base
   belongs_to :team
   belongs_to :year
+  has_many :schedules
   validate :wins_and_losses_sum
   validates :wins, presence: true
   validates :losses, presence: true

@@ -7,13 +7,4 @@ $(document).ready(function(){
     $('.links-end').append($teamstring);
   });
 
-  $(".ws").click(function(event){
-    event.preventDefault();
-  });
-  $('.ws').dblclick(function(){
-    $('.ws').hide();
-  });
-  $('.ws').dblclick(function(){
-    $('.ws-show').show();
-  });
 });

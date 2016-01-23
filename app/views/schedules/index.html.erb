@@ -1,0 +1,64 @@
+<%=render 'home/header'%>
+
+<body id="page-top">
+
+<%=render 'home/nav_bar'%>
+
+    <header class = "main">
+        <div class="header-content-main">
+            <div class="header-content-inner-main">
+            </div>
+        </div>
+    </header>
+
+<div class="links">
+      <%= link_to 'Back to ' "#{@league.name}", league_path(@league), class: "btn"%>
+      <a href="/leagues/<%=@league.id%>/statistics/years/2015/leaders" class= "btn">League Leaders</a>
+      <%= link_to 'Teams', league_teams_path(@league,@team), class: "btn" %>
+      <%= link_to 'Standings', league_standings_path(@league), class: "btn"%>
+    </div>
+
+<h2 class = "subject"><%=@league.name%> Schedule</h2>
+
+<div class = "links-top">
+  <%= link_to 'Add Game' , '#', class: "btn btn-special btn-sched" %>
+</div>
+
+<div class="hidden" id = "schedules">
+  <%=render '/schedules/form'%>
+</div>
+
+<table class = "table-format">
+  <thead>
+    <tr>
+
+      <th>Date</th>
+      <th>Home</th>
+      <th>Away</th>
+      <th>Home Goals</th>
+      <th>Away Goals</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @schedules.sort_by {|schedule| schedule.date}.reverse.each do |schedule|%>
+      <tr>
+        <td><%=schedule.short_date%></td>
+        <td><a href="/leagues/<%=@league.id%>/schedules/<%=schedule.home_team_id%>"><%=schedule.home_team%></a> </td>
+        <td><a href="/leagues/<%=@league.id%>/schedules/<%=schedule.away_team_id%>"><%=schedule.away_team%></td>
+        <td><%=schedule.homegoals %></td>
+        <td><%=schedule.awaygoals %></td>
+        <!-- <td><%= link_to 'Edit' , '#', class: "btn btn-special btn-sched" %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<%=render 'home/footer'%>
+
+</body>
+
+</html>

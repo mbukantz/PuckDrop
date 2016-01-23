@@ -17,6 +17,7 @@
   <%= link_to 'Back to ' "#{@league.name}", league_path(@league), class: "btn"%>
   <a href="/leagues/<%=@league.id%>/statistics/years/2015/leaders" class= "btn">League Leaders</a>
   <%= link_to 'Standings', league_standings_path(@league), class: "btn"%>
+  <%= link_to 'Schedule', league_schedules_path(@league), class: "btn" %>
 </div>
 
 <h2 class = "subject"><a href="/leagues/<%=@league.id%>"><%="#{@league.name}"%> </a></h2>
