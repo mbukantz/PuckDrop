@@ -41,6 +41,7 @@ class SchedulesController < ApplicationController
     @league = League.find(params[:league_id])
     @team = Team.find(params[:team_id])
     @schedules = Schedule.where("league_id = ? AND hometeam_league_id = ? AND awayteam_league_id = ?", @league.id, @league.id, @league.id).where("hometeam = ? OR awayteam = ?", params[:team_id], params[:team_id])
+    @wins = Schedule.where("league_id = ? AND hometeam_league_id = ? AND awayteam_league_id = ?", @league.id, @league.id, @league.id).where("hometeam = ?", params[:team_id]).where("homegoals > awaygoals").count + Schedule.where("league_id = ? AND hometeam_league_id = ? AND awayteam_league_id = ?", @league.id, @league.id, @league.id).where("awayteam = ?", params[:team_id]).where("awaygoals > homegoals").count
   end
 
   def schedule_params

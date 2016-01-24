@@ -50,9 +50,6 @@ ActiveRecord::Schema.define(version: 20160122193417) do
   end
 
   create_table "standings", force: :cascade do |t|
-    t.integer  "games"
-    t.integer  "wins"
-    t.integer  "losses"
     t.integer  "team_id"
     t.integer  "year_id"
     t.datetime "created_at", null: false

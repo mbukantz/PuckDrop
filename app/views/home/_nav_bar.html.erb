@@ -11,6 +11,31 @@
             <a class="navbar-brand page-scroll" href="/">PuckDrop</a>
         </div>
 
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                      <%= link_to 'Standings', league_standings_path(@league), class: "btn"%>
+                    </li>
+                    <li>
+                      <%= link_to 'Schedule', league_schedules_path(@league), class: "btn" %>
+                    </li>
+                    <li>
+                      <a href="/leagues/<%=@league.id%>/statistics/years/2015/leaders" class= "btn">League Leaders</a>
+                    </li>
+                    <li>
+                      <%= link_to 'Teams', league_teams_path(@league,@team), class: "btn" %>
+                    </li>
+                    <li>
+                      <a href="/leagues/<%=@league.id%>/teams/<%=@league.teams.first.id%>/statistics/years/2015" class = "btn">Player Stats</a>
+                    </li>
+                    <li>
+                      <%= link_to 'All Leagues', leagues_path , class: "btn"%>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+
 
     </div>
     <!-- /.container-fluid -->

@@ -51,15 +51,10 @@ end
 
 y.times do |i|
   standing = Standing.new
-  standing.games = 82
-  standing.wins = rand(30..55)
-  standing.losses = 82 - standing.wins
   standing.team_id = 1 + i
   standing.year_id = rand(2013..2015)
   standing.save
 end
-
-
 
   y.times do |i|
     player = Player.new

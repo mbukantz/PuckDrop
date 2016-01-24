@@ -11,13 +11,6 @@
         </div>
     </header>
 
-    <div class="links">
-      <%= link_to 'Back to ' "#{@league.name}", league_path(@league), class: "btn"%>
-      <a href="/leagues/<%=@league.id%>/statistics/years/2015/leaders" class= "btn">League Leaders</a>
-      <%= link_to 'Teams', league_teams_path(@league,@team), class: "btn" %>
-      <%= link_to 'Schedule', league_schedules_path(@league), class: "btn" %>
-    </div>
-
 <h2 class = "subject"><%=@league.name%> Standings</h2>
 
 <table class = "table-format">
@@ -29,6 +22,8 @@
       <th>Wins</th>
       <th>Losses</th>
       <th>Win Percentage</th>
+      <th>Goals For</th>
+      <th>Goals Against</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -41,6 +36,8 @@
         <td><%=team.standing.wins %></td>
         <td><%=team.standing.losses %></td>
         <td><%=team.standing.win_percentage %></td>
+        <td><%=team.standing.goals_for%></td>
+        <td><%=team.standing.goals_against%></td>
         <td> <a href="/leagues/<%=@league.id%>/standings/<%=team.standing.id%>/edit">Edit</a> </td>
 
       </tr>
