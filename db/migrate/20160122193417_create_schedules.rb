@@ -1,8 +1,8 @@
 class CreateSchedules < ActiveRecord::Migration
   def change
     create_table :schedules do |t|
-      t.string :hometeam
-      t.string :awayteam
+      t.integer :hometeam
+      t.integer :awayteam
       t.datetime :date
       t.integer :homegoals
       t.integer :awaygoals

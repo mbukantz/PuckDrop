@@ -38,7 +38,11 @@ class Standing < ActiveRecord::Base
   end
 
   def win_percentage
-    (self.wins/ (self.wins + self.losses).to_f).round(3)
+    if self.wins == 0 && self.losses == 0
+      0.00
+    else
+      (self.wins/ (self.wins + self.losses).to_f).round(3)
+    end
   end
 
   def wins_and_losses_sum

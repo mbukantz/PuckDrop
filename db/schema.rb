@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 20160122193417) do
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.string   "hometeam"
-    t.string   "awayteam"
+    t.integer  "hometeam"
+    t.integer  "awayteam"
     t.datetime "date"
     t.integer  "homegoals"
     t.integer  "awaygoals"

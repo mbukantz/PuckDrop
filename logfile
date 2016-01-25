@@ -9,3 +9,15 @@ ERROR:  database "puckdrop_database" already exists
 STATEMENT:  CREATE DATABASE "puckdrop_database" ENCODING = 'utf8'
 ERROR:  database "puckdrop_database" already exists
 STATEMENT:  CREATE DATABASE "puckdrop_database" ENCODING = 'utf8'
+FATAL:  database "puckdrop_database" does not exist
+ERROR:  database "puckdrop_database" already exists
+STATEMENT:  CREATE DATABASE "puckdrop_database" ENCODING = 'utf8'
+ERROR:  operator does not exist: character varying = integer at character 124
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+STATEMENT:  SELECT COUNT(*) FROM "schedules" WHERE (league_id = 1 AND hometeam_league_id = 1 AND awayteam_league_id = 1) AND (hometeam = 6) AND (homegoals > awaygoals)
+ERROR:  operator does not exist: character varying = integer at character 124
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+STATEMENT:  SELECT COUNT(*) FROM "schedules" WHERE (league_id = 1 AND hometeam_league_id = 1 AND awayteam_league_id = 1) AND (hometeam = 6) AND (homegoals > awaygoals)
+FATAL:  database "puckdrop_database" does not exist
+ERROR:  database "puckdrop_database" already exists
+STATEMENT:  CREATE DATABASE "puckdrop_database" ENCODING = 'utf8'
