@@ -1,0 +1,11 @@
+postgres cannot access the server configuration file "/usr/local/pgsql/data/postgresql.conf": No such file or directory
+LOG:  database system was shut down at 2016-01-25 13:16:53 EST
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  database "puckdrop_database" already exists
+STATEMENT:  CREATE DATABASE "puckdrop_database" ENCODING = 'utf8'
+ERROR:  database "puckdrop_database" already exists
+STATEMENT:  CREATE DATABASE "puckdrop_database" ENCODING = 'utf8'
+ERROR:  database "puckdrop_database" already exists
+STATEMENT:  CREATE DATABASE "puckdrop_database" ENCODING = 'utf8'

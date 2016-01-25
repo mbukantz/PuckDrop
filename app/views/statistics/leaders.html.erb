@@ -12,25 +12,33 @@
         </div>
     </header>
 
-  <div class = "content">
-    <div class="links">
-      <span class = "skater-toggle"><%= link_to 'Skater', '#', class: "btn"%></span>
-      <span class = "goalie-toggle"><%= link_to 'Goalie', '#', class: "btn"%></span>
-    </div>
-  </div>
 
   <div class = "skater">
 
     <h2 class = "subject">Skater Leaders</h2>
 
+    <div class = "content">
+      <div class="links">
+        <span class = "skater-toggle"><%= link_to 'Skater', '#', class: "btn"%></span>
+        <span class = "goalie-toggle"><%= link_to 'Goalie', '#', class: "btn"%></span>
+      </div>
+    </div>
+
     <h3 class = "subject"><%=@year.id%></h3>
 
-    <strong><div class="button">Years</div></strong>
-      <%@years.each do |year|%>
-        <div class="dropdown">
-          <strong><a href="/leagues/<%=@league.id%>/statistics/years/<%=year.id%>/leaders"><%=year.id%></a></strong>
-        </div>
-      <%end%>
+  <select id="years">
+    <%@years.reverse.each do |year|%>
+      <option value="/leagues/<%=@league.id%>/statistics/years/<%=year.id%>/leaders"><%=year.id%></option>
+    <%end%>
+  </select>
+
+  <script>
+      document.getElementById("years").onchange = function() {
+          if (this.selectedIndex!==0) {
+              window.location.href = this.value;
+          }
+      };
+  </script>
 
     <table class="table-format">
       <thead>
@@ -69,6 +77,13 @@
 
   <div class="goalie hidden">
     <h2 class = "subject">Goalie Leaders</h2>
+
+    <div class = "content">
+      <div class="links">
+        <span class = "skater-toggle"><%= link_to 'Skater', '#', class: "btn"%></span>
+        <span class = "goalie-toggle"><%= link_to 'Goalie', '#', class: "btn"%></span>
+      </div>
+    </div>
 
     <h3 class = "subject"><%=@year.id%></h3>
 

@@ -18,7 +18,7 @@ class Standing < ActiveRecord::Base
   has_many :schedules
 
   def wins
-    Schedule.where("league_id = ? AND hometeam_league_id = ? AND awayteam_league_id = ?", self.team.league_id, self.team.league_id, self.team.league_id).where("hometeam = ?",self.team_id).sum("homegoals") + Schedule.where("league_id = ? AND hometeam_league_id = ? AND awayteam_league_id = ?", self.team.league_id, self.team.league_id, self.team.league_id).where("awayteam = ?",self.team_id).sum("awaygoals")
+    Schedule.where("league_id = ? AND hometeam_league_id = ? AND awayteam_league_id = ?", self.team.league_id, self.team.league_id, self.team.league_id).where("hometeam = ?",self.team_id).where("homegoals > awaygoals").count + Schedule.where("league_id = ? AND hometeam_league_id = ? AND awayteam_league_id = ?", self.team.league_id, self.team.league_id, self.team.league_id).where("awayteam = ?",self.team_id).where("awaygoals > homegoals").count
   end
 
   def losses

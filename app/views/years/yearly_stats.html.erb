@@ -23,12 +23,19 @@
 
   <h3 class = "subject"><%=@year.id%></h3>
 
-  <strong><div class="button">Years</div></strong>
-    <%@years.each do |year|%>
-      <div class="dropdown">
-        <strong><a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/statistics/years/<%=year.id%>"><%=year.id%></a></strong>
-      </div>
-    <%end%>
+    <select id="years">
+      <%@years.reverse.each do |year|%>
+        <option value="/leagues/<%=@league.id%>/teams/<%=@team.id%>/statistics/years/<%=year.id%>"><%=year.id%></option>
+      <%end%>
+    </select>
+
+    <script>
+        document.getElementById("years").onchange = function() {
+            if (this.selectedIndex!==0) {
+                window.location.href = this.value;
+            }
+        };
+    </script>
 
   <div class = "skater"%>
     <table class = "table-format">
