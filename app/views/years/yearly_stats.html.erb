@@ -1,3 +1,4 @@
+<html>
 <%=render 'home/header'%>
 
 <body id="page-top">
@@ -72,16 +73,16 @@
     </table><br>
 
     <div class = "links-end">
-      <%= link_to 'Add Player' , new_league_team_player_path, class: "btn btn-special btn-player" %>
+      <%= link_to 'Add Player' ,"#" , class: "btn btn-special btn-player" %>
 
       <%= link_to 'Add Statistic' , '#', class: "btn btn-special btn-stat" %>
     </div>
 
-    <div class="hidden">
+    <div class="hidden" id="players">
       <%=render '/players/form'%>
     </div>
 
-    <div class="hidden">
+    <div class="hidden" id="stats">
       <%=render '/statistics/form'%>
     </div>
   </div>
@@ -122,7 +123,7 @@
     </table><br>
 
     <div class = "links-end">
-      <%= link_to 'Add Goalie' , new_league_team_player_path, class: "btn btn-special btn-player" %>
+      <%= link_to 'Add Goalie' , "#", class: "btn btn-special btn-player" %>
 
       <%= link_to 'Add Statistic' , '#', class: "btn btn-special btn-stat" %>
     </div>

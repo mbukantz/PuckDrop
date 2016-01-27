@@ -1,20 +1,20 @@
 $(document).ready(function(){
-  $(".btn-special").click(function(event){
+  $(".links-end").click(function(event){
     event.preventDefault();
   });
-  $statstring = $('.hidden #stats').clone().get(0).innerHTML
   $('.btn-stat').click(function(){
-    $('.links-end').append($statstring);
+    $('#players').removeClass('hidden');
+    $('#stats').addClass('hidden');
   });
-
-  $playerstring = $('.hidden #players').clone().get(0).innerHTML
   $('.btn-player').click(function(){
-    $('.links-end').append($playerstring);
+    $('#stats').removeClass('hidden');
+    $('#players').addClass('hidden');
   });
 });
 
 $(document).ready(function(){
   $('.content').click(function(event){
+    byebug;
     event.preventDefault();
   });
   $('.goalie-toggle').on('click',function() {
