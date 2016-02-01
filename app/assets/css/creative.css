@@ -11,6 +11,21 @@ body {
     height: 100%;
 }
 
+.headlines #headline_pic img{
+  width: 700px;
+  height: auto;
+}
+.headlines {
+  width: 700px;
+  margin-left: 85px;
+  margin-bottom: 75px;
+}
+
+h1#name {
+  margin-left: 115px;
+}
+
+
 #years {
   margin-left: 30px;
 }

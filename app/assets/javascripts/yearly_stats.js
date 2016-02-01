@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $(".links-end").click(function(event){
+  $(".btn-special").click(function(event){
     event.preventDefault();
   });
   $('.btn-stat').click(function(){

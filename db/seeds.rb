@@ -14,6 +14,11 @@ z = 5 #leagues
 
 years = Year.create([{id: 2013},{id: 2014}, {id: 2015}])
 
+
+Headline.create([{name:'Rangers win the Stanley Cup',picture:"rangers_cup.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Matteau is unsung hero',picture:"matteau.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Leetch takes home MVP',picture:"leetch_conn_smythe.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Linden valient in defeat',picture:"linden.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Will Keenan depart for Detroit?',picture:"keenan.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)}])
+
+
+
 z.times do |i|
   league = League.new
   league.name = Faker::App.name

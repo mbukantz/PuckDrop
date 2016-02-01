@@ -1,0 +1,25 @@
+<%=render 'home/header'%>
+
+<body id="page-top">
+
+<%=render 'home/nav_bar'%>
+
+    <header class = "main">
+        <div class="header-content-main">
+            <div class="header-content-inner-main">
+            </div>
+        </div>
+    </header>
+
+<div class= "headlines">
+  <%@headlines.each do |headline|%>
+  <a href="/leagues/<%=@league.id%>/news/<%=headline.id%>"><h1 id="name"><%=headline.name%></h1></a>
+    <a href="/leagues/<%=@league.id%>/news/<%=headline.id%>"><div id="headline_pic"><%=image_tag(headline.picture)%></div></a>  
+  <%end%>
+</div>
+
+<%=render 'home/footer'%>
+
+</body>
+
+</html>
