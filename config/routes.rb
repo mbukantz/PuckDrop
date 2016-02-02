@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :leagues do
+    resources :scores
     resources :standings
     resources :schedules, except: :show
     resources :teams do

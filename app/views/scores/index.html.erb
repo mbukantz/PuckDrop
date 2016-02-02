@@ -1,0 +1,42 @@
+  <%=render 'home/header'%>
+
+  <body id="page-top">
+
+  <%=render 'home/nav_bar'%>
+
+      <header class = "main">
+          <div class="header-content-main">
+              <div class="header-content-inner-main">
+              </div>
+          </div>
+      </header>
+
+      <div class="scores-full"%>
+        <h1 id="scoreboard">Scoreboard</h1>
+        <%@scores.each do |score|%>
+            <div class="score-board">
+              <div class="player">
+                <div class="score-box">
+                <h4><%=score.hometeam%></h4>
+                  <%=score.home_goals%>
+                </div>
+              </div>
+              <div class="period-timer">
+                <%=score.period_board%><br>
+                <%=score.time_left%>
+              </div>
+              <div class="player">
+                <div class="score-box">
+                <h4><%=score.awayteam%></h4>
+                  <%=score.away_goals%>
+                </div>
+              </div>
+            </div>
+          <%end%>
+        </div>
+
+  <%=render 'home/footer'%>
+
+  </body>
+
+  </html>

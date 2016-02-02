@@ -14,6 +14,12 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
+                      <a href="/leagues/<%=@league.id%>/home" class= "btn">Home</a>
+                    </li>
+                    <li>
+                      <%= link_to 'Scores', league_scores_path(@league), class: "btn"%>
+                    </li>
+                    <li>
                       <%= link_to 'Standings', league_standings_path(@league), class: "btn"%>
                     </li>
                     <li>

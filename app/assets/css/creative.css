@@ -4,6 +4,59 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+ .container {
+  float: left;
+  width: 100%;
+ }
+
+ .headlines #headline_pic img{
+   width: 700px;
+   height: auto;
+ }
+ .headlines {
+   float: left;
+   width: 55%
+ }
+
+ h1#scoreboard {
+   margin-left: 190px;
+ }
+ h1#name {
+   margin-left: 115px;
+ }
+
+ .scores-full {
+   margin-left: 30%;
+   margin-top: 50px;
+   margin-bottom: 50px;
+ }
+ .scores {
+   float: left;
+   width: 30%;
+   margin-right: 15px;
+ }
+
+ .score-board {
+   text-align: center;
+   border: 3px solid black;
+   width: 600px;
+ }
+ .player {
+   display: inline-block;
+   padding: 15px;
+ }
+ .player h4 {
+   font-weight: bold;
+ }
+ .period-timer {
+   display: inline-block;
+ }
+ .score-box {
+   color: #000101;
+   width: 200px;
+   height: 80px;
+ }
+
 
 html,
 body {
@@ -11,19 +64,7 @@ body {
     height: 100%;
 }
 
-.headlines #headline_pic img{
-  width: 700px;
-  height: auto;
-}
-.headlines {
-  width: 700px;
-  margin-left: 85px;
-  margin-bottom: 75px;
-}
 
-h1#name {
-  margin-left: 115px;
-}
 
 
 #years {

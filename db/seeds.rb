@@ -6,17 +6,18 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+v = 30 #games/day
 w = 5000 #games/schedules
 x = 100 #teams
 y = 2000 #players
 z = 5 #leagues
 
 
+
 years = Year.create([{id: 2013},{id: 2014}, {id: 2015}])
 
 
 Headline.create([{name:'Rangers win the Stanley Cup',picture:"rangers_cup.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Matteau is unsung hero',picture:"matteau.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Leetch takes home MVP',picture:"leetch_conn_smythe.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Linden valient in defeat',picture:"linden.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Will Keenan depart for Detroit?',picture:"keenan.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)}])
-
 
 
 z.times do |i|
@@ -100,4 +101,22 @@ end
       statistic.year_id = rand(2013..2015)
     end
     statistic.save
+  end
+
+  v.times do |i|
+    score = Score.new
+    score.hometeam_id = rand(1..x)
+    away = rand(1..x)
+    if away != score.hometeam_id
+      score.awayteam_id = away
+    else
+      score.awayteam_id = rand(1..x)
+    end
+    score.home_goals = rand(0..6)
+    score.away_goals = rand(0..6)
+    score.period = rand(1..3)
+    score.time_remaining = rand(0.00..20.00)
+    score.hometeam_league_id = Team.find(score.hometeam_id).league_id
+    score.awayteam_league_id = Team.find(score.awayteam_id).league_id
+    score.save
   end

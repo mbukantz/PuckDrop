@@ -11,14 +11,40 @@
         </div>
     </header>
 
-<div class= "headlines">
-  <%@headlines.each do |headline|%>
-  <a href="/leagues/<%=@league.id%>/news/<%=headline.id%>"><h1 id="name"><%=headline.name%></h1></a>
-    <a href="/leagues/<%=@league.id%>/news/<%=headline.id%>"><div id="headline_pic"><%=image_tag(headline.picture)%></div></a>  
-  <%end%>
+<div class= "container">
+  <div class= "headlines">
+    <%@headlines.each do |headline|%>
+    <a href="/leagues/<%=@league.id%>/news/<%=headline.id%>"><h1 id="name"><%=headline.name%></h1></a>
+      <a href="/leagues/<%=@league.id%>/news/<%=headline.id%>"><div id="headline_pic"><%=image_tag(headline.picture)%></div></a>
+    <%end%>
+  </div>
+
+
+  <div class="scores"%>
+    <a href="/leagues/<%=@league.id%>/scores"><h1 id="scoreboard">Scoreboard</h1></a> 
+    <%@scores.each do |score|%>
+        <div class="score-board">
+          <div class="player">
+            <div class="score-box">
+            <h4><%=score.hometeam%></h4>
+              <%=score.home_goals%>
+            </div>
+          </div>
+          <div class="period-timer">
+            <%=score.period_board%><br>
+            <%=score.time_left%>
+          </div>
+          <div class="player">
+            <div class="score-box">
+            <h4><%=score.awayteam%></h4>
+              <%=score.away_goals%>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    </div>
 </div>
 
-<%=render 'home/footer'%>
 
 </body>
 
