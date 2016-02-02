@@ -39,6 +39,7 @@
  .score-board {
    text-align: center;
    border: 3px solid black;
+   background-color: rgba(115, 174, 203,.5);
    width: 600px;
  }
  .player {
@@ -57,6 +58,40 @@
    height: 80px;
  }
 
+ h1#leaderboard {
+   text-align: center;
+   margin-bottom: 20px;
+ }
+
+ h2#stat {
+   padding-top: 10px;
+   margin-top: 10px;
+ }
+
+ .leaders {
+   float: left;
+   width: 600px;
+   margin-right: 15px;
+   background-color: rgba(115, 174, 203,.5);
+   border: 3px solid black;
+ }
+
+ .stat-line {
+   float: left;
+   text-align: center;
+   width: 260px;
+   margin-right: 15px;
+   margin-left: 15px;
+   margin-bottom: 30px;
+ }
+
+ h3#positions{
+   margin-top: 20px;
+   margin: 0px;
+   padding: 0px;
+   border: 0px;
+   text-align: center;
+ }
 
 html,
 body {

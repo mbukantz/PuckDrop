@@ -81,10 +81,10 @@ class StatisticsController < ApplicationController
     @year = Year.find(params[:year_id])
     @years = Year.all
     @teams = Team.where('league_id = ?', @league.id)
-    @teams.each do |team|
-      filtered_statistics << team.statistics
-    end
-    statistics = filtered_statistics.flatten
+      @teams.each do |team|
+        filtered_statistics << team.statistics
+      end
+      statistics = filtered_statistics.flatten
     @statistics = Statistic.where(id: statistics.map(&:id)).where("year_id = ?", @year.id).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
     @g_statistics = Statistic.where(id: statistics.map(&:id)).where("year_id = ?", @year.id).order("Wins" + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
   end

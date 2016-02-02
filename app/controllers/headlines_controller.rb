@@ -14,7 +14,16 @@ class HeadlinesController < ApplicationController
   def index
     @league = League.find(params[:league_id])
     @headlines = Headline.all
+    @year = Year.last
     @scores = Score.where("hometeam_league_id = ? AND awayteam_league_id = ?", @league.id, @league.id)
+      filtered_statistics = []
+    @teams = Team.where('league_id = ?', @league.id)
+      @teams.each do |team|
+        filtered_statistics << team.statistics
+      end
+        statistics = filtered_statistics.flatten
+    @statistics = Statistic.where(id: statistics.map(&:id)).where("year_id = ?", @year.id)
+    @g_statistics = Statistic.where(id: statistics.map(&:id)).where("year_id = ?", @year.id)
   end
 
   def show

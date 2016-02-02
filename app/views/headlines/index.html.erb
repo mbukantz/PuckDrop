@@ -21,7 +21,7 @@
 
 
   <div class="scores"%>
-    <a href="/leagues/<%=@league.id%>/scores"><h1 id="scoreboard">Scoreboard</h1></a> 
+    <a href="/leagues/<%=@league.id%>/scores"><h1 id="scoreboard">Scoreboard</h1></a>
     <%@scores.each do |score|%>
         <div class="score-board">
           <div class="player">
@@ -40,12 +40,88 @@
               <%=score.away_goals%>
             </div>
           </div>
-        </div>
+        </div><br>
       <%end%>
     </div>
+
+    <a href="/leagues/<%=@league.id%>/statistics/years/<%=@year.id%>/leaders"><h1 id="leaderboard">Leaderboard</h1></a>
+    <div class="leaders">
+      <h3 id="positions">Skaters</h3>
+      <div class="stat-line">
+        <h2 id="stat">Goals</h2>
+        <%@statistics.sort_by {|statistic| statistic.goals.to_i}.reverse[0..4].each do |statistic|%>
+          <div style="clear: both">
+            <h4 style="float: left"><a href="/leagues/<%=statistic.player.team.league.id%>/teams/<%=statistic.player.team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a></h4>
+            <h4 style="float: right"><%=statistic.goals%></h4></span><br>
+          </div>
+        <%end%>
+      </div>
+      <div class="stat-line">
+        <h2 id="stat">Points</h2>
+        <%@statistics.sort_by {|statistic| statistic.points.to_i}.reverse[0..4].each do |statistic|%>
+          <div style="clear: both">
+            <h4 style="float: left"><a href="/leagues/<%=statistic.player.team.league.id%>/teams/<%=statistic.player.team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a></h4>
+            <h4 style="float: right"><%=statistic.points%></h4></span><br>
+          </div>
+        <%end%>
+      </div>
+      <div class="stat-line">
+        <h2 id="stat">Assists</h2>
+        <%@statistics.sort_by {|statistic| statistic.assists.to_i}.reverse[0..4].each do |statistic|%>
+          <div style="clear: both">
+            <h4 style="float: left"><a href="/leagues/<%=statistic.player.team.league.id%>/teams/<%=statistic.player.team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a></h4>
+            <h4 style="float: right"><%=statistic.assists%></h4></span><br>
+          </div>
+        <%end%>
+      </div>
+      <div class="stat-line">
+        <h2 id="stat">Plus-Minus</h2>
+        <%@statistics.sort_by {|statistic| statistic.plus_minus.to_i}.reverse[0..4].each do |statistic|%>
+          <div style="clear: both">
+            <h4 style="float: left"><a href="/leagues/<%=statistic.player.team.league.id%>/teams/<%=statistic.player.team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a></h4>
+            <h4 style="float: right"><%=statistic.plus_minus%></h4></span><br>
+          </div>
+        <%end%>
+      </div>
+      <h3 id="positions">Goalies</h3>
+      <div class="stat-line">
+        <h2 id="stat">Wins</h2>
+        <%@g_statistics.sort_by {|statistic| statistic.wins.to_i}.reverse[0..4].each do |statistic|%>
+          <div style="clear: both">
+            <h4 style="float: left"><a href="/leagues/<%=statistic.player.team.league.id%>/teams/<%=statistic.player.team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a></h4>
+            <h4 style="float: right"><%=statistic.wins%></h4></span><br>
+          </div>
+        <%end%>
+      </div>
+      <div class="stat-line">
+        <h2 id="stat">GAA</h2>
+        <%@g_statistics.sort_by {|statistic| statistic.gaa.to_f}.reverse[0..4].each do |statistic|%>
+          <div style="clear: both">
+            <h4 style="float: left"><a href="/leagues/<%=statistic.player.team.league.id%>/teams/<%=statistic.player.team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a></h4>
+            <h4 style="float: right"><%=statistic.gaa.round(2)%></h4></span><br>
+          </div>
+        <%end%>
+      </div>
+      <div class="stat-line">
+        <h2 id="stat">Shutouts</h2>
+        <%@g_statistics.sort_by {|statistic| statistic.shutouts.to_i}.reverse[0..4].each do |statistic|%>
+          <div style="clear: both">
+            <h4 style="float: left"><a href="/leagues/<%=statistic.player.team.league.id%>/teams/<%=statistic.player.team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a></h4>
+            <h4 style="float: right"><%=statistic.shutouts%></h4></span><br>
+          </div>
+        <%end%>
+      </div>
+      <div class="stat-line">
+        <h2 id="stat">Save Percentage</h2>
+        <%@g_statistics.sort_by {|statistic| statistic.save_percentage.to_f}.reverse[0..4].each do |statistic|%>
+          <div style="clear: both">
+            <h4 style="float: left"><a href="/leagues/<%=statistic.player.team.league.id%>/teams/<%=statistic.player.team.id%>/players/<%=statistic.player.id%>"><%=statistic.player.full_name %></a></h4>
+            <h4 style="float: right"><%=statistic.save_percentage.round(3)%></h4></span><br>
+          </div>
+        <%end%>
+      </div>
+    </div>
+
 </div>
-
-
 </body>
-
 </html>
