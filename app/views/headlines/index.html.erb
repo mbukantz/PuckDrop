@@ -45,8 +45,8 @@
     </div>
 
     <a href="/leagues/<%=@league.id%>/statistics/years/<%=@year.id%>/leaders"><h1 id="leaderboard">Leaderboard</h1></a>
+    <h3 id="positions">Skaters</h3>
     <div class="leaders">
-      <h3 id="positions">Skaters</h3>
       <div class="stat-line">
         <h2 id="stat">Goals</h2>
         <%@statistics.sort_by {|statistic| statistic.goals.to_i}.reverse[0..4].each do |statistic|%>
@@ -83,7 +83,9 @@
           </div>
         <%end%>
       </div>
-      <h3 id="positions">Goalies</h3>
+    </div>
+    <h3 id="positions">Goalies</h3>
+    <div class="leaders">
       <div class="stat-line">
         <h2 id="stat">Wins</h2>
         <%@g_statistics.sort_by {|statistic| statistic.wins.to_i}.reverse[0..4].each do |statistic|%>
@@ -121,6 +123,31 @@
         <%end%>
       </div>
     </div>
+
+    <a href="/leagues/<%=@league.id%>/standings"><h1 id="standings">Standings</h1></a>
+    <!-- <div class="standings"> -->
+      <table class="standings">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>Win %</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @standing_teams.sort_by {|team| team.standing.win_percentage}.reverse.each do |team|%>
+            <tr>
+              <td> <a href="/leagues/<%=@league.id%>/teams/<%=team.id%>/players"><%=team.full_name %></a> </td>
+              <td><%=team.standing.wins %></td>
+              <td><%=team.standing.losses %></td>
+              <td><%='%.3f' %[team.standing.win_percentage] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <!-- </div> -->
 
 </div>
 </body>

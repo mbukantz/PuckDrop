@@ -70,6 +70,7 @@
 
  .leaders {
    float: left;
+   margin-bottom: 30px;
    width: 600px;
    margin-right: 15px;
    background-color: rgba(115, 174, 203,.5);
@@ -86,11 +87,25 @@
  }
 
  h3#positions{
-   margin-top: 20px;
-   margin: 0px;
+   margin: 20px 0px 10px 0px;
    padding: 0px;
    border: 0px;
    text-align: center;
+ }
+
+ h1#standings {
+   text-align: center;
+   margin-bottom: 20px;
+ }
+
+ .standings {
+   float: left;
+   margin-bottom: 30px;
+   width: 400px;
+   margin-left: 100px;
+   margin-right: 100px;
+   background-color: rgba(115, 174, 203,.5);
+   border: 3px solid black;
  }
 
 html,
@@ -98,9 +113,6 @@ body {
     width: 100%;
     height: 100%;
 }
-
-
-
 
 #years {
   margin-left: 30px;

@@ -21,7 +21,7 @@
       <th>Games</th>
       <th>Wins</th>
       <th>Losses</th>
-      <th>Win Percentage</th>
+      <th>Win %</th>
       <th>Goals For</th>
       <th>Goals Against</th>
       <th colspan="3"></th>
@@ -35,7 +35,7 @@
         <td><%=team.standing.games %></td>
         <td><%=team.standing.wins %></td>
         <td><%=team.standing.losses %></td>
-        <td><%=team.standing.win_percentage %></td>
+        <td><%='%.3f' %[team.standing.win_percentage] %></td>
         <td><%=team.standing.goals_for%></td>
         <td><%=team.standing.goals_against%></td>
         <td> <a href="/leagues/<%=@league.id%>/standings/<%=team.standing.id%>/edit">Edit</a> </td>

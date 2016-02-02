@@ -24,6 +24,7 @@ class HeadlinesController < ApplicationController
         statistics = filtered_statistics.flatten
     @statistics = Statistic.where(id: statistics.map(&:id)).where("year_id = ?", @year.id)
     @g_statistics = Statistic.where(id: statistics.map(&:id)).where("year_id = ?", @year.id)
+    @standing_teams = @league.teams
   end
 
   def show
