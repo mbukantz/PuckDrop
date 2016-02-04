@@ -20,7 +20,6 @@
     <h2 id="title"><%=@video.title%></h2>
     <p id="caption"><%=@video.caption%></p>
 
-    <div class="links"><%= link_to 'New Video', new_league_video_path , class: "btn"%></div><br><br>
 
     <div class="thumbnails">
       <%@videos.each do |video|%>
@@ -30,6 +29,15 @@
       </dl>
       <%end%>
     </div>
+
+    <div class="links" id="video_links"><%= link_to 'New Video', "#" , class: "btn"%></div><br><br>
+
+    <div class="hidden" id="new_video">
+      <h2 id="video_header">New Video</h2>
+        <%=render 'form'%>
+    </div>
+
+<%=render 'home/footer'%>
 
 </body>
 

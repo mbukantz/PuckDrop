@@ -175,6 +175,18 @@ img.thumbs{
   display: inline;
 }
 
+#new_video{
+  clear:both;
+}
+
+.links#video_links{
+  clear:both;
+}
+
+h2#video_header{
+  padding-top: 0px;
+}
+
 
 dl {
     float: left;
@@ -238,6 +250,7 @@ p {
 }
 
 .bg-primary {
+  clear:both;
     background-color: #f05f40;
 }
 

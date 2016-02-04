@@ -1,11 +1,11 @@
 
     <div class = "main-body">
-      <%= form_for [@league,@video] do |f| %>
-        <% if @video.errors.any? %>
+      <%= form_for [@league,@video_new] do |f| %>
+        <% if @video_new.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(@video.errors.count, "error") %> prohibited this team from being saved:</h2>
+            <h2><%= pluralize(@video_new.errors.count, "error") %> prohibited this video from being saved:</h2>
             <ul>
-            <% @video.errors.full_messages.each do |message| %>
+            <% @video_new.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>
             </ul>

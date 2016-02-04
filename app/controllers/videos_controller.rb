@@ -3,6 +3,7 @@ class VideosController < ApplicationController
     @league = League.find(params[:league_id])
     @videos = Video.all
     @video = Video.find(params[:id])
+    @video_new = Video.new
   end
 
   def new
