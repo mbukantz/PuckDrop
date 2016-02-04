@@ -19,8 +19,10 @@
  }
 
  h1#scoreboard {
-   margin-left: 190px;
+   text-align: center;
+   margin-bottom: 20px;
  }
+
  h1#name {
    margin-left: 115px;
  }
@@ -107,6 +109,57 @@
    background-color: rgba(115, 174, 203,.5);
    border: 3px solid black;
  }
+
+ h1#schedules {
+   text-align: center;
+   margin-bottom: 20px;
+ }
+
+ .schedules {
+   float: left;
+   margin-bottom: 30px;
+   width: 400px;
+   margin-left: 100px;
+   margin-right: 100px;
+   background-color: rgba(115, 174, 203,.5);
+   border: 3px solid black;
+ }
+
+.active-vid {
+  padding-left: 250px;
+  padding-right: 250px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+h2#title{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left:250px;
+  margin-top: 5px;
+}
+p#caption {
+  padding-left: 250px;
+  padding-right:550px;
+  padding-bottom:50px;
+}
+
+ .thumbnails{
+   margin: 25px;
+   margin-bottom: 10px;
+   margin-right: 50px;
+   display: inline;
+ }
+ span.thumb-title{
+   margin-left: 100px;
+   margin-right: 50px;
+   display: inline;
+ }
+
+img.thumbs{
+  margin-left: 50px;
+  display: inline;
+}
 
 html,
 body {

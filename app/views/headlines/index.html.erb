@@ -11,7 +11,8 @@
         </div>
     </header>
 
-<div class= "container">
+  <div class= "container">
+    
   <div class= "headlines">
     <%@headlines.each do |headline|%>
     <a href="/leagues/<%=@league.id%>/news/<%=headline.id%>"><h1 id="name"><%=headline.name%></h1></a>
@@ -20,8 +21,8 @@
   </div>
 
 
+  <a href="/leagues/<%=@league.id%>/scores"><h1 id="scoreboard">Scoreboard</h1></a>
   <div class="scores"%>
-    <a href="/leagues/<%=@league.id%>/scores"><h1 id="scoreboard">Scoreboard</h1></a>
     <%@scores.each do |score|%>
         <div class="score-board">
           <div class="player">
@@ -125,7 +126,6 @@
     </div>
 
     <a href="/leagues/<%=@league.id%>/standings"><h1 id="standings">Standings</h1></a>
-    <!-- <div class="standings"> -->
       <table class="standings">
         <thead>
           <tr>
@@ -147,7 +147,28 @@
           <% end %>
         </tbody>
       </table>
-    <!-- </div> -->
+
+    <a href="/leagues/<%=@league.id%>/schedules"><h1 id="schedules">Upcoming Games</h1></a>
+    <table class = "schedules">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Home</th>
+          <th>Away</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @schedules.sort_by {|schedule| schedule.date}.reverse.each do |schedule|%>
+          <tr>
+            <td><%=schedule.short_date%></td>
+            <td><a href="/leagues/<%=@league.id%>/schedules/<%=schedule.home_team_id%>"><%=schedule.home_team%></a> </td>
+            <td><a href="/leagues/<%=@league.id%>/schedules/<%=schedule.away_team_id%>"><%=schedule.away_team%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+
 
 </div>
 </body>

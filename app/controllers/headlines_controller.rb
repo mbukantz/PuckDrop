@@ -25,6 +25,7 @@ class HeadlinesController < ApplicationController
     @statistics = Statistic.where(id: statistics.map(&:id)).where("year_id = ?", @year.id)
     @g_statistics = Statistic.where(id: statistics.map(&:id)).where("year_id = ?", @year.id)
     @standing_teams = @league.teams
+    @schedules = Schedule.where("league_id = ? AND hometeam_league_id = ? AND awayteam_league_id = ?", @league.id, @league.id, @league.id).where("date > ?",Time.now)
   end
 
   def show

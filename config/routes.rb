@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :leagues do
     resources :scores
     resources :standings
+    resources :videos
     resources :schedules, except: :show
     resources :teams do
       resources :players

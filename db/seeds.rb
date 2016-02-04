@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-v = 30 #games/day
-w = 5000 #games/schedules
+v = 100 #games/day
+w = 10000 #games/schedules
 x = 100 #teams
 y = 2000 #players
 z = 5 #leagues
@@ -17,7 +17,9 @@ z = 5 #leagues
 years = Year.create([{id: 2013},{id: 2014}, {id: 2015}])
 
 
-Headline.create([{name:'Rangers win the Stanley Cup',picture:"rangers_cup.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Matteau is unsung hero',picture:"matteau.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Leetch takes home MVP',picture:"leetch_conn_smythe.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Linden valient in defeat',picture:"linden.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Will Keenan depart for Detroit?',picture:"keenan.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)}])
+Headline.create([{name:'Rangers win the Stanley Cup',picture:"rangers_cup.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Matteau is unsung hero',picture:"matteau.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Leetch takes home MVP',picture:"leetch_conn_smythe.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Linden valient in defeat',picture:"linden.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Will Keenan depart for Detroit?',picture:"keenan.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Neil Smith: The Mastermind',picture:"neil_smith.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'Pat Quinn falls short again',picture:"pat_quinn.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'The Russian Rocket',picture:"bure.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)},{name:'MacTavish to hang it up',picture:"mactavish.jpg" ,body: Faker::Lorem.paragraph(2, true, 4)}])
+
+Video.create([{title:'Rangers win Stanley Cup',caption:"The 1993-94 New York Rangers hold on to beat the Vancouver Canucks for their first cup in 54 years.",short_url:"https://youtu.be/Dr0m5bWAgk0",url:"https://www.youtube.com/watch?v=Dr0m5bWAgk0"},{title:'Matteau double OT goal',caption:"Stephan Matteau goal in Game 7 sent the Rangers to the Cup Finals, and it is the moment of the playoffs",short_url:"https://youtu.be/9vKvKMmOwuI",url:"https://www.youtube.com/watch?v=9vKvKMmOwuI"},{title:'Mark Messier Guarantee',caption:"Mark Messier said 'We will win tonight', and he delivers with a hat trick to fight off elimination",short_url:"https://youtu.be/XMBqmyi5LRM",url:"https://www.youtube.com/watch?v=XMBqmyi5LRM"}])
 
 
 z.times do |i|
@@ -46,9 +48,11 @@ w.times do |i|
     else
       schedule.awayteam = rand(1..x)
     end
-  schedule.date = Faker::Date.between(3.years.ago, Date.today)
-  schedule.homegoals = rand(0..6)
-  schedule.awaygoals = rand(0..6)
+  schedule.date = Faker::Date.between(3.years.ago, Faker::Date.forward(365))
+  if schedule.date < Date.today
+    schedule.homegoals = rand(0..6)
+    schedule.awaygoals = rand(0..6)
+  end
   schedule.league_id = rand(1..5)
   schedule.hometeam_league_id = Team.find(schedule.hometeam).league_id
   schedule.awayteam_league_id = Team.find(schedule.awayteam).league_id

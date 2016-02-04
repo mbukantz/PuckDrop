@@ -15,4 +15,5 @@ class League < ActiveRecord::Base
   has_many :players, through: :teams
   has_many :schedules
   has_many :headlines
+  has_many :videos
 end
