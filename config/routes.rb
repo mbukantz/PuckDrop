@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :leagues do
+    resources :headlines, except: [:index, :show]
     resources :scores
     resources :standings
     resources :videos

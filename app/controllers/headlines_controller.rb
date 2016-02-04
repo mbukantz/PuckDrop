@@ -13,6 +13,7 @@ class HeadlinesController < ApplicationController
 
   def index
     @league = League.find(params[:league_id])
+    @headline = Headline.new
     @headlines = Headline.all
     @year = Year.last
     @scores = Score.where("hometeam_league_id = ? AND awayteam_league_id = ?", @league.id, @league.id)
@@ -31,5 +32,25 @@ class HeadlinesController < ApplicationController
   def show
     @headline = Headline.find(params[:headline_id])
     @league = League.find(params[:league_id])
+  end
+
+  def new
+    @headlines = Headline.all
+    @league = League.find(params[:league_id])
+    @headline = Headline.new
+  end
+
+  def create
+    @headline = Headline.new(headline_params)
+    if @headline.save
+      redirect_to headlines_path(@headline.league_id,@headline.id)
+    else
+      render 'new'
+    end
+  end
+
+private
+  def headline_params
+    params.require(:headline).permit(:name,:body,:picture,:league_id)
   end
 end
