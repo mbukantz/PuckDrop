@@ -20,18 +20,16 @@
     <h2 id="title"><%=@video.title%></h2>
     <p id="caption"><%=@video.caption%></p>
 
-    <div class="links"><%= link_to 'New Video', new_league_video_path , class: "btn"%></div><br><br><br><br>
-
-
+    <div class="links"><%= link_to 'New Video', new_league_video_path , class: "btn"%></div><br><br>
 
     <div class="thumbnails">
       <%@videos.each do |video|%>
-        <a href="/leagues/<%=@league.id%>/videos/<%=video.id%>"><%=image_tag (video.image_url),height: '175', width: '250'%></a>
-        <a href="/leagues/<%=@league.id%>/videos/<%=video.id%>"><%=video.title%></a>
+      <dl>
+        <dt><a href="/leagues/<%=@league.id%>/videos/<%=video.id%>"><%=image_tag (video.image_url),height: '175', width: '250'%></a></dt>
+        <dd><a href="/leagues/<%=@league.id%>/videos/<%=video.id%>"><%=video.title%></a></dd>
+      </dl>
       <%end%>
     </div>
-
-<%=render 'home/footer'%>
 
 </body>
 

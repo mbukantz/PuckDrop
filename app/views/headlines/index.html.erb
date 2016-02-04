@@ -12,7 +12,7 @@
     </header>
 
   <div class= "container">
-    
+
   <div class= "headlines">
     <%@headlines.each do |headline|%>
     <a href="/leagues/<%=@league.id%>/news/<%=headline.id%>"><h1 id="name"><%=headline.name%></h1></a>
@@ -46,8 +46,8 @@
     </div>
 
     <a href="/leagues/<%=@league.id%>/statistics/years/<%=@year.id%>/leaders"><h1 id="leaderboard">Leaderboard</h1></a>
-    <h3 id="positions">Skaters</h3>
     <div class="leaders">
+      <h3 id="positions">Skaters</h3>
       <div class="stat-line">
         <h2 id="stat">Goals</h2>
         <%@statistics.sort_by {|statistic| statistic.goals.to_i}.reverse[0..4].each do |statistic|%>
@@ -85,8 +85,8 @@
         <%end%>
       </div>
     </div>
-    <h3 id="positions">Goalies</h3>
     <div class="leaders">
+      <h3 id="positions">Goalies</h3>
       <div class="stat-line">
         <h2 id="stat">Wins</h2>
         <%@g_statistics.sort_by {|statistic| statistic.wins.to_i}.reverse[0..4].each do |statistic|%>
@@ -124,6 +124,7 @@
         <%end%>
       </div>
     </div>
+
 
     <a href="/leagues/<%=@league.id%>/standings"><h1 id="standings">Standings</h1></a>
       <table class="standings">
