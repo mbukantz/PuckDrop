@@ -11,6 +11,9 @@ class Score < ActiveRecord::Base
     time = self.time_remaining
     first = time.to_i
     last = ((time % 1) * 60).to_i
+      if last < 10
+        last = "0#{last}"
+      end
     "#{first}:#{last}"
   end
 
