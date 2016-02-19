@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 v = 100 #games/day
-w = 10000 #games/schedules
+w = 50000 #games/schedules
 x = 100 #teams
 y = 2000 #players
 z = 5 #leagues

@@ -21,3 +21,9 @@ STATEMENT:  SELECT COUNT(*) FROM "schedules" WHERE (league_id = 1 AND hometeam_l
 FATAL:  database "puckdrop_database" does not exist
 ERROR:  database "puckdrop_database" already exists
 STATEMENT:  CREATE DATABASE "puckdrop_database" ENCODING = 'utf8'
+FATAL:  database "fanpoll_development" does not exist
+FATAL:  database "fanpoll_development" does not exist
+FATAL:  database "fanpoll_development" does not exist
+FATAL:  database "fanpoll_development" does not exist
+WARNING:  worker took too long to start; canceled
+WARNING:  autovacuum worker started without a worker entry

@@ -4,3 +4,9 @@ div.bar {
     height: 75px;
     background-color: teal;
 }
+
+.pumpkin {
+    fill: yellow;
+    stroke: orange;
+    stroke-width: 5;
+ }

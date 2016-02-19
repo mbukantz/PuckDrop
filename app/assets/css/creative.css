@@ -4,6 +4,11 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+div#wins-graph {
+  text-align: center;
+}
+
+
  .container {
   float: left;
   width: 100%;

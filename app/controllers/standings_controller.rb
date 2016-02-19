@@ -16,6 +16,13 @@ class StandingsController < ApplicationController
     @team = Team.new
     @teams = @league.teams
     @standing = @team.standing
+      @team_wins = []
+      @teams.sort_by {|team| team.standing.win_percentage}.reverse.each do |team|
+        placeholder = []
+        placeholder << team.full_name
+        placeholder << team.standing.wins
+        @team_wins << placeholder
+      end
   end
 
   def edit
