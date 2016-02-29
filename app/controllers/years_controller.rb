@@ -13,13 +13,14 @@ class YearsController < ApplicationController
   def yearly_stats
     @league = League.find(params[:league_id])
     @team = Team.find(params[:team_id])
+    @teams = Team.all
     @year = Year.find(params[:id])
     @statistics = @team.statistics.where("year_id = ?", @year.id).order(sort_column + " " + sort_direction)
     @years = Year.all
     @statistic = Statistic.new
     @players = Player.where("team_id = ?", @team.id)
     @player = Player.new
-    
+
   end
 
   private

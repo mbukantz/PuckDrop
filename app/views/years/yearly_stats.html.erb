@@ -22,6 +22,20 @@
 
   <h2 class = "subject"><%=@team.full_name%></a></h2>
 
+  <select id="teams">
+    <%@teams.reverse.each do |team|%>
+      <option value="/leagues/<%=@league.id%>/teams/<%=team.id%>/statistics/years/2015"><%=team.full_name%></option>
+    <%end%>
+  </select>
+
+  <script>
+      document.getElementById("teams").onchange = function() {
+          if (this.selectedIndex!==0) {
+              window.location.href = this.value;
+          }
+      };
+  </script>
+
   <h3 class = "subject"><%=@year.id%></h3>
 
     <select id="years">
