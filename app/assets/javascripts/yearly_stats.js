@@ -3,12 +3,12 @@ $(document).ready(function(){
     event.preventDefault();
   });
   $('.btn-stat').click(function(){
-    $('#players').removeClass('hidden');
-    $('#stats').addClass('hidden');
-  });
-  $('.btn-player').click(function(){
     $('#stats').removeClass('hidden');
     $('#players').addClass('hidden');
+  });
+  $('.btn-player').click(function(){
+    $('#players').removeClass('hidden');
+    $('#stats').addClass('hidden');
   });
 });
 

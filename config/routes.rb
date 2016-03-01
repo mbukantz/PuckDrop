@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :teams do
       resources :players
       resources :statistics
+      resources :salaries
     end
   end
   root to: "home#index"

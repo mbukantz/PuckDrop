@@ -15,6 +15,7 @@
 class Team < ActiveRecord::Base
   validates :name, presence: true
   has_many :players
+  has_many :salaries, through: :players
   has_many :statistics, through: :players
   belongs_to :league
   has_one :standing

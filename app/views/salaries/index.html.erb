@@ -1,0 +1,155 @@
+<html>
+<%=render 'home/header'%>
+
+<body id="page-top">
+
+<%=render 'home/nav_bar'%>
+
+    <header class = "main">
+        <div class="header-content-main">
+            <div class="header-content-inner-main">
+            </div>
+        </div>
+    </header>
+
+
+  <h2 class = "subject"><%=@team.full_name%></a></h2>
+
+  <select id="teams">
+    <%@teams.reverse.each do |team|%>
+      <option value="/leagues/<%=@league.id%>/teams/<%=team.id%>/salaries"><%=team.full_name%></option>
+    <%end%>
+  </select>
+
+  <script>
+      document.getElementById("teams").onchange = function() {
+          if (this.selectedIndex!==0) {
+              window.location.href = this.value;
+          }
+      };
+  </script>
+
+  <div class = "skater"%>
+
+    <table class = "table-format2-headers">
+      <thead>
+        <tr>
+          <th >Name</th>
+          <th ><%=Year.last.id%></th>
+          <th ><%=Year.last.id + 1%></th>
+          <th ><%=Year.last.id + 2%></th>
+          <th ><%=Year.last.id + 3%></th>
+          <th ><%=Year.last.id + 4%></th>
+          <th ><%=Year.last.id + 5%></th>
+          <th ><%=Year.last.id + 6%></th>
+          <th ><%=Year.last.id + 7%></th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table><br>
+
+
+    <table class = "table-format2">
+      <thead>
+        <tr>
+          <th >Forwards</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @forwards.sort_by {|forward| [forward.player.full_position,forward.year_0]}.reverse.each do |forward|%>
+          <tr >
+            <td > <a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/players/<%=forward.player.id%>"><%=forward.player.full_name %></a> </td>
+            <td ><%=number_with_delimiter(forward.year_0)%></td>
+            <td ><%=number_with_delimiter(forward.year_1)%></td>
+            <td ><%=number_with_delimiter(forward.year_2)%></td>
+            <td ><%=number_with_delimiter(forward.year_3)%></td>
+            <td ><%=number_with_delimiter(forward.year_4)%></td>
+            <td ><%=number_with_delimiter(forward.year_5)%></td>
+            <td ><%=number_with_delimiter(forward.year_6)%></td>
+            <td ><%=number_with_delimiter(forward.year_7)%></td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table><br>
+
+      <table class = "table-format2">
+        <thead>
+          <tr>
+            <th >Defense</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @defense.sort_by {|d| [d.player.full_position,d.year_0]}.reverse.each do |d|%>
+          <tr >
+            <td > <a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/players/<%=d.player.id%>"><%=d.player.full_name %></a> </td>
+            <td ><%=number_with_delimiter(d.year_0)%></td>
+            <td ><%=number_with_delimiter(d.year_1)%></td>
+            <td ><%=number_with_delimiter(d.year_2)%></td>
+            <td ><%=number_with_delimiter(d.year_3)%></td>
+            <td ><%=number_with_delimiter(d.year_4)%></td>
+            <td ><%=number_with_delimiter(d.year_5)%></td>
+            <td ><%=number_with_delimiter(d.year_6)%></td>
+            <td ><%=number_with_delimiter(d.year_7)%></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table><br>
+
+      <table class = "table-format2">
+        <thead>
+          <tr>
+            <th >Goalies</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @goalies.sort_by {|goalie| [goalie.player.full_position,goalie.year_0]}.reverse.each do |goalie|%>
+          <tr >
+            <td > <a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/players/<%=goalie.player.id%>"><%=goalie.player.full_name %></a> </td>
+            <td ><%=number_with_delimiter(goalie.year_0)%></td>
+            <td ><%=number_with_delimiter(goalie.year_1)%></td>
+            <td ><%=number_with_delimiter(goalie.year_2)%></td>
+            <td ><%=number_with_delimiter(goalie.year_3)%></td>
+            <td ><%=number_with_delimiter(goalie.year_4)%></td>
+            <td ><%=number_with_delimiter(goalie.year_5)%></td>
+            <td ><%=number_with_delimiter(goalie.year_6)%></td>
+            <td ><%=number_with_delimiter(goalie.year_7)%></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table><br>
+
+      <table class = "table-format2">
+        <thead>
+          <tr>
+            <th >TOTAL</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr >
+            <td ></td>
+            <td ><b><%=number_with_delimiter(@salaries.sum("year_0"))%></td>
+            <td ><b><%=number_with_delimiter(@salaries.sum("year_1"))%></td>
+            <td ><b><%=number_with_delimiter(@salaries.sum("year_2"))%></td>
+            <td ><b><%=number_with_delimiter(@salaries.sum("year_3"))%></td>
+            <td ><b><%=number_with_delimiter(@salaries.sum("year_4"))%></td>
+            <td ><b><%=number_with_delimiter(@salaries.sum("year_5"))%></td>
+            <td ><b><%=number_with_delimiter(@salaries.sum("year_6"))%></td>
+            <td ><b><%=number_with_delimiter(@salaries.sum("year_7"))%></td>
+          </tr>
+        </tbody>
+      </table><br>
+
+
+    </div>
+
+<%=render 'home/footer'%>
+
+</body>
+
+</html>

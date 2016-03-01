@@ -21,6 +21,7 @@
 class Player < ActiveRecord::Base
   belongs_to :team
   has_many :statistics
+  has_one :salary, :foreign_key => :player_id
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :birthday, presence: true
@@ -50,5 +51,13 @@ class Player < ActiveRecord::Base
     feet = inches / 12
     remainder = inches % 12
     height = "#{feet}'#{remainder}"
+  end
+
+  def full_position
+    if self.position == "Right Wing" || self.position == "Left Wing" || self.position == "Center"
+      "Forward"
+    else
+      self.position
+    end
   end
 end

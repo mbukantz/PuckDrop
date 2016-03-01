@@ -83,6 +83,84 @@ end
   end
 
   y.times do |i|
+    salary = Salary.new
+      salary.year_0 = [500000,1000000,1250000,1500000,1750000,2000000,2250000,2500000,2750000,3000000,3250000,3500000,3750000,4000000,4250000,4500000,5000000,5250000,5500000,6000000,6500000,7000000,8000000,9000000,1000000].sample
+      salary.year_1 =
+        case rand(100) + 1
+        when 1..85 then
+          if salary.year_0 != ""
+            salary.year_0
+          end
+        when 86..100 then ""
+        end
+      salary.year_2 =
+        if salary.year_1 != ""
+          case rand(100) + 1
+          when 1..65 then salary.year_1
+          when 66..100 then ""
+          end
+        else
+          ""
+        end
+      salary.year_3 =
+        if salary.year_2 != ""
+          case rand(100) + 1
+          when 1..50 then salary.year_2
+          when 51..100 then ""
+          end
+        else
+          ""
+        end
+        salary.year_4 =
+          if salary.year_3 != ""
+            case rand(100) + 1
+            when 1..45 then salary.year_3
+            when 46..100 then ""
+            end
+          else
+            ""
+          end
+          salary.year_5 =
+            if salary.year_4 != ""
+              case rand(100) + 1
+              when 1..35 then salary.year_4
+              when 36..100 then ""
+              end
+            else
+              ""
+            end
+          salary.year_6 =
+            if salary.year_5 != ""
+              case rand(100) + 1
+              when 1..30 then salary.year_5
+              when 31..100 then ""
+              end
+            else
+              ""
+            end
+          salary.year_7 =
+            if salary.year_6 != ""
+              case rand(100) + 1
+              when 1..20 then salary.year_6
+              when 21..100 then ""
+              end
+            else
+              ""
+            end
+          salary.year_8 =
+            if salary.year_7 != ""
+              case rand(100) + 1
+              when 1..15 then salary.year_7
+              when 16..100 then ""
+              end
+            else
+              ""
+            end
+    salary.player_id = i + 1
+    salary.save
+  end
+
+  y.times do |i|
     statistic = Statistic.new
     statistic.player_id = i + 1
     if statistic.player.position != "Goalie"
