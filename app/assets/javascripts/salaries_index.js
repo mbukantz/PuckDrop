@@ -1,0 +1,13 @@
+$(document).ready(function(){
+  $(".btn-special").click(function(event){
+    event.preventDefault();
+  });
+  $('.btn-salary').click(function(){
+    $('#salaries').removeClass('hidden');
+    $('#players').addClass('hidden');
+  });
+  $('.btn-player').click(function(){
+    $('#players').removeClass('hidden');
+    $('#salaries').addClass('hidden');
+  });
+});

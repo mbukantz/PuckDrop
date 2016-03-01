@@ -144,9 +144,22 @@
           </tr>
         </tbody>
       </table><br>
-
-
     </div>
+
+    <div class = "links-end">
+      <%= link_to 'Add Player' ,"#" , class: "btn btn-special btn-player" %>
+
+      <%= link_to 'Add Salaries' , '#', class: "btn btn-special btn-salary" %>
+    </div>
+
+    <div class="hidden" id="players">
+      <%=render '/players/form'%>
+    </div>
+
+    <div class="hidden" id="salaries">
+      <%=render 'form'%>
+    </div>
+
 
 <%=render 'home/footer'%>
 

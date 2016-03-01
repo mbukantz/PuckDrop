@@ -30,6 +30,14 @@
       Shoots: <%=@player.shoots%>
     </p>
 
+  <h3 class = "subject"> <a href="/leagues/<%=@player.team.league_id%>/teams/<%=@player.team_id%>/salaries">Contract Details</a> </h3>
+
+    <p class = "subject">
+      Years: <%=@player.salary.years%><br>
+      Value: $<%=number_with_delimiter(@player.salary.value)%><br>
+      AAV: $<%=number_with_delimiter(@player.salary.aav)%>
+    </p>
+
   <h3 class = "subject">Stats</h3>
 
   <table class = "table-format-2">

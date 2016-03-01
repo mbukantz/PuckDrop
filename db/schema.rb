@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20160229173211) do
   end
 
   create_table "salaries", force: :cascade do |t|
+    t.integer  "player_id"
     t.integer  "year_0"
     t.integer  "year_1"
     t.integer  "year_2"
@@ -53,7 +54,6 @@ ActiveRecord::Schema.define(version: 20160229173211) do
     t.integer  "year_6"
     t.integer  "year_7"
     t.integer  "year_8"
-    t.integer  "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
