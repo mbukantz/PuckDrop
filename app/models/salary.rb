@@ -37,4 +37,21 @@ class Salary < ActiveRecord::Base
   def aav
     self.value/self.years
   end
+
+  def buyout_value
+    if self.player.age > 26
+      self.value * 2 / 3
+    else
+      self.value * 1 / 3
+    end
+  end
+
+  def payout_length
+    self.years * 2
+  end
+
+  def annual_payout
+    self.buyout_value/ self.payout_length
+  end
+
 end

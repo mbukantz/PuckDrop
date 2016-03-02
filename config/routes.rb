@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :teams do
       resources :players
       resources :statistics
-      resources :salaries
+      resources :salaries, except: :show
     end
   end
   root to: "home#index"
@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   get '/leagues/:league_id/schedules/:team_id/', to: 'schedules#team_schedule', as: 'team_schedule'
   get '/leagues/:league_id/home', to: 'headlines#index', as: 'headlines'
   get '/leagues/:league_id/news/:headline_id', to: 'headlines#show', as: 'headline'
+  get '/leagues/:league_id/teams/:team_id/salaries/:salary_id/buyout', to: 'salaries#buyout', as: 'buyout'
+  get '/leagues/:league_id/teams/:team_id/salaries/buyoutcalc', to: 'salaries#buyout_home', as: 'buyout_home'
 
 end

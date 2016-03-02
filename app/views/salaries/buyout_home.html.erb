@@ -1,0 +1,39 @@
+
+<%=render 'home/header'%>
+
+<body id="page-top">
+
+<%=render 'home/nav_bar'%>
+
+    <header class = "main">
+        <div class="header-content-main">
+            <div class="header-content-inner-main">
+            </div>
+        </div>
+    </header>
+
+
+<h1 class="subject">Buyout Calculator</h1>
+
+<h2 class = "subject">Select a player to buyout:</h2>
+
+<select id="buyouts">
+  <%@salaries.each do |salary|%>
+    <option value="/leagues/<%=@league.id%>/teams/<%=@team.id%>/salaries/<%=salary.id%>/buyout"><%=salary.player.full_name%></option>
+  <%end%>
+</select>
+
+<script>
+    document.getElementById("buyouts").onchange = function() {
+        if (this.selectedIndex!==0) {
+            window.location.href = this.value;
+        }
+    };
+</script>
+
+
+<%=render 'home/footer'%>
+
+</body>
+
+</html>

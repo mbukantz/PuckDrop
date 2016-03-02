@@ -49,6 +49,20 @@ class SalariesController < ApplicationController
     end
   end
 
+  def buyout_home
+    @league = League.find params[:league_id]
+    @team = Team.find(params[:team_id])
+    @salaries = Salary.all
+  end
+
+  def buyout
+    @league = League.find params[:league_id]
+    @team = Team.find(params[:team_id])
+    @salary = Salary.find(params[:salary_id])
+  end
+
+
+
   private
 
   def salary_params

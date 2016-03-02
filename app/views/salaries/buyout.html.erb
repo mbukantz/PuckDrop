@@ -1,0 +1,33 @@
+<%=render 'home/header'%>
+
+<body id="page-top">
+
+<%=render 'home/nav_bar'%>
+
+    <header class = "main">
+        <div class="header-content-main">
+            <div class="header-content-inner-main">
+            </div>
+        </div>
+    </header>
+
+
+<h1 class="subject"> <a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/salaries/buyoutcalc">Buyout Calculator</a></h1>
+
+<h2 class = "subject"><%=@salary.player.full_name%></h2>
+
+<h3 class = "subject">
+  If <%=@salary.player.full_name%> is bought out, the <%=@team.full_name%> will pay him <b>$<%=number_with_delimiter(@salary.buyout_value)%></b> over <%=@salary.payout_length%> years.
+</h3>
+
+<h3 class = "subject">Here is the payout:</h3>
+
+  <%@salary.payout_length.times do |i|%>
+    <h4 class = "subject"><b><%=Year.last.id + i + 1%> - $<%=number_with_delimiter(@salary.annual_payout)%></b></h4>
+  <%end%>
+
+<%=render 'home/footer'%>
+
+</body>
+
+</html>

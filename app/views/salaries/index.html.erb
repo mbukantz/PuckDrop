@@ -43,6 +43,7 @@
           <th ><%=Year.last.id + 5%></th>
           <th ><%=Year.last.id + 6%></th>
           <th ><%=Year.last.id + 7%></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -69,6 +70,7 @@
             <td ><%=number_with_delimiter(forward.year_5)%></td>
             <td ><%=number_with_delimiter(forward.year_6)%></td>
             <td ><%=number_with_delimiter(forward.year_7)%></td>
+            <td> <a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/salaries/<%=forward.id%>/buyout">Buyout</a> </td>
           </tr>
         <% end %>
 
@@ -94,6 +96,7 @@
             <td ><%=number_with_delimiter(d.year_5)%></td>
             <td ><%=number_with_delimiter(d.year_6)%></td>
             <td ><%=number_with_delimiter(d.year_7)%></td>
+            <td> <a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/salaries/<%=d.id%>/buyout">Buyout</a> </td>
           </tr>
           <% end %>
         </tbody>
@@ -118,6 +121,7 @@
             <td ><%=number_with_delimiter(goalie.year_5)%></td>
             <td ><%=number_with_delimiter(goalie.year_6)%></td>
             <td ><%=number_with_delimiter(goalie.year_7)%></td>
+            <td> <a href="/leagues/<%=@league.id%>/teams/<%=@team.id%>/salaries/<%=goalie.id%>/buyout">Buyout</a> </td>
           </tr>
           <% end %>
         </tbody>
@@ -141,6 +145,7 @@
             <td ><b><%=number_with_delimiter(@salaries.sum("year_5"))%></td>
             <td ><b><%=number_with_delimiter(@salaries.sum("year_6"))%></td>
             <td ><b><%=number_with_delimiter(@salaries.sum("year_7"))%></td>
+            <td></td>
           </tr>
         </tbody>
       </table><br>
