@@ -72,7 +72,7 @@ class StatisticsController < ApplicationController
     end
     statistics = filtered_statistics.flatten
     @statistics = Statistic.where(id: statistics.map(&:id)).where("year_id = ?", @year.id).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
-    @g_statistics = Statistic.where(id: statistics.map(&:id)).where("year_id = ?", @year.id).order("Wins" + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
+    @g_statistics = Statistic.where(id: statistics.map(&:id)).where("year_id = ?", @year.id).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
   end
 
   def goalie_leaders
